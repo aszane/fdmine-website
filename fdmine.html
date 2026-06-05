@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDMine — Твой новый мир</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Жидкие шары на фоне -->
+<div class="blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+  <div class="blob blob-5"></div>
+</div>
+
+<div class="wrapper">
+
+<!-- ─── НАВИГАЦИЯ ─── -->
+<nav>
+  <div class="nav-logo">FDMine</div>
+  <ul class="nav-links">
+    <li><a href="#features">Особенности</a></li>
+    <li><a href="#about">О сервере</a></li>
+    <li><a href="#store">Донат</a></li>
+    <li><a href="https://discord.gg/fdmine" class="nav-cta">Наш Discord</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── ГЛАВНЫЙ ЭКРАН ─── -->
+<section id="hero">
+  <div class="hero-deco">
+    <div class="deco-line"></div>
+    <div class="deco-line deco-line-2"></div>
+  </div>
+
+  <div class="hero-eyebrow">
+    <span class="dot"></span>
+    Новый сезон уже запущен
+  </div>
+
+  <h1 class="hero-title">
+    <span class="t1">Играй иначе.</span>
+    <span class="t2">FDMine</span>
+  </h1>
+
+  <p class="hero-sub">
+    Продуманное выживание с уникальной экономикой и кастомными механиками. Атмосферный мир, где каждый игрок оставляет свой след. Присоединяйся к комьюнити.
+  </p>
+
+  <div class="hero-actions">
+    <button class="btn-ip" id="copyBtn" onclick="copyIP()">
+      <span class="ip-icon" id="ipIcon">⬡</span>
+      <span class="ip-text" id="ipText">mc.fdmine.ru</span>
+      <span style="font-size:0.78rem; color: var(--text-muted); font-weight:400;">Нажми, чтобы скопировать</span>
+    </button>
+    <a href="#about" class="btn-secondary">↓ Исследовать мир</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-value live" id="playerCount">247</div>
+      <div class="stat-label">
+        <span class="online-indicator"><span class="online-dot"></span>В игре сейчас</span>
+      </div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-value">1000+</div>
+      <div class="stat-label">Уникальных достижений</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-value">1.21.11</div>
+      <div class="stat-label">Версия сервера</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ОСОБЕННОСТИ ─── -->
+<section id="features">
+  <div class="features-header reveal">
+    <div class="section-label">Что мы предлагаем</div>
+    <div class="section-title">Создано для тех,<br>кто хочет большего</div>
+    <p class="section-desc">Каждая деталь проработана вручную. Каждая механика настроена до идеала.</p>
+  </div>
+
+<div class="features-grid">
+    <div class="feature-card wide reveal">
+      <div class="feature-icon icon-cyan">🏦</div>
+      <div>
+        <div class="feature-name">Банковская система</div>
+        <div class="feature-desc">Открывайте личный банковский счёт, выбирайте тариф, пополняйте и снимайте средства, переводите другим игрокам. Полноценная финансовая система прямо в игре.</div>
+      </div>
+    </div>
+
+    <div class="feature-card card-emerald reveal">
+      <div class="feature-icon icon-emerald">💹</div>
+      <div class="feature-name">Живая Экономика</div>
+      <div class="feature-desc">Рынок управляется самими игроками. Торгуйте ресурсами, скупайте алмазы или станьте самым богатым магнатом сервера. Экономика реагирует на спрос.</div>
+    </div>
+
+    <div class="feature-card card-purple reveal">
+      <div class="feature-icon icon-purple">🪙</div>
+      <div class="feature-name">Система коинов</div>
+      <div class="feature-desc">Зарабатывай коины игровым путём — абсолютно бесплатно. Трать их на уникальные эффекты и косметику. Никакого доната — только скилл и активность.</div>
+    </div>
+
+    <div class="feature-card card-pink reveal">
+      <div class="feature-icon icon-pink">⚖️</div>
+      <div class="feature-name">Законы и штрафы</div>
+      <div class="feature-desc">Нарушил закон — получи штраф в АР (алмазная глубинносланцевая руда). На сервере действует реальная правовая система с полицией, судьями и советами миров.</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon icon-amber">🏆</div>
+      <div class="feature-name">Лидерборды</div>
+      <div class="feature-desc">Рейтинги по коинам, достижениям и наигранному времени. Докажи, что ты лучший — не в бою, а в развитии.</div>
+    </div>
+
+    <div class="feature-card card-emerald reveal">
+      <div class="feature-icon icon-emerald">📖</div>
+      <div class="feature-name">BlazeAndCave — 1000+ достижений</div>
+      <div class="feature-desc">Датапак с более чем тысячей уникальных достижений. Исследуй, выполняй задачи и открывай то, чего нет в ванильном Minecraft.</div>
+    </div>
+    </div>
+
+<a href="https://docs.fdmine.ru" class="docs-link reveal" target="_blank">
+    📚 Узнать больше о сервере
+  </a>
+</section>
+
+<!-- ─── О СЕРВЕРЕ ─── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-label">Атмосфера сервера</div>
+      <div class="section-title">Мир, где важен каждый</div>
+      <p><strong>FDMine</strong> — это продуманное пространство для тех, кто устал от хаотичных серверов-однодневок. Мы создаем экосистему, где приятно находиться, развиваться и общаться.</p>
+      <p>Здесь <strong>каждое решение имеет вес</strong>. Открывайте свое дело, взаимодействуйте с проработанной банковской системой, получайте документы и влияйте на экономику. Ваша история начинается с чистого листа.</p>
+    </div>
+    <div class="about-cards">
+      <div class="about-card reveal">
+        <div class="about-card-icon">💻</div>
+        <div class="about-card-text">
+          <h4>Самописные плагины</h4>
+          <p>Мы пишем уникальные плагины для сервера с нуля. Это гарантирует высокую оптимизацию, стабильный TPS и механики, которых вы не найдете на других проектах.</p>
+        </div>
+      </div>
+      <div class="about-card reveal">
+        <div class="about-card-icon">🤝</div>
+        <div class="about-card-text">
+          <h4>Игроки на первом месте</h4>
+          <p>Почти половина фишек сервера внедрена по идеям из тикетов в Discord. Мы читаем абсолютно всё.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ТИЗЕР МАГАЗИНА ─── -->
+<section id="store">
+  <div class="store-banner reveal">
+    <div class="section-label">Поддержать проект</div>
+    <div class="section-title">Подписка Premium</div>
+    <p class="section-desc">Единый статус для тех, кто хочет помочь серверу развиваться и оставаться независимым. Мы принципиально против продажи игровых преимуществ, поэтому приготовили для наших спонсоров приятные визуальные и атмосферные бонусы.</p>
+    <div class="store-perks">
+      <div class="perk-chip"><span class="chip-dot" style="background:#a855f7;"></span>Особый титул</div>
+      <div class="perk-chip"><span class="chip-dot" style="background:#00f5ff;"></span>Кастомный Визуал</div>
+      <div class="perk-chip"><span class="chip-dot" style="background:#10ffa0;"></span>Развлекательные фичи</div>
+    </div>
+    <a href="https://store.fdmine.net" class="btn-store">⚡ Перейти в магазин</a>
+  </div>
+</section>
+
+<!-- ─── ПОДВАЛ ─── -->
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 FDMine. Not affiliated with Mojang Studios.</div>
+    <div class="footer-badge">Сделано с <span>♥</span> для игроков</div>
+  </div>
+</footer>
+
+</div>
+
+<!-- Уведомление -->
+<div class="toast" id="toast">✓ IP скопирован в буфер обмена!</div>
+
+<script src="script.js"></script>
+</body>
+</html>
