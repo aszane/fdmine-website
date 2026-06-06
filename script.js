@@ -1,6 +1,25 @@
+// ─── FAQ TABS ───
+function switchTab(id) {
+  const currentPanel = document.querySelector('.faq-panel.active');
+  const newPanel = document.getElementById('tab-' + id);
+
+  // Не делаем ничего если таб уже активен
+  if (currentPanel === newPanel) return;
+
+  document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.faq-tab[onclick="switchTab('${id}')"]`).classList.add('active');
+
+  // Fade out текущей панели, затем fade in новой
+  currentPanel.classList.add('fading');
+  setTimeout(() => {
+    currentPanel.classList.remove('active', 'fading');
+    newPanel.classList.add('active');
+  }, 180);
+}
+
 // ─── COPY IP ───
 function copyIP() {
-  const ip = 'mc.fdmine.ru'; // Временно заменили на цифровой IP для копирования
+  const ip = 'mc.fdmine.ru';
   navigator.clipboard.writeText(ip).then(() => {
     const btn = document.getElementById('copyBtn');
     const icon = document.getElementById('ipIcon');
@@ -12,10 +31,9 @@ function copyIP() {
     setTimeout(() => {
       btn.classList.remove('copied');
       icon.textContent = '⬡';
-      text.textContent = ip; // Возвращаем цифровой IP обратно
+      text.textContent = ip;
     }, 2500);
   }).catch(() => {
-    // Резервный вариант, если браузер блокирует буфер
     const el = document.createElement('textarea');
     el.value = ip;
     document.body.appendChild(el);
@@ -34,14 +52,9 @@ function showToast() {
 
 // ─── РЕАЛЬНЫЙ ТИКЕР ОНЛАЙНА С СЕРВЕРА ───
 function updateRealPlayerCount() {
-  // Твой реальный IP и порт
-  const ip = '5.83.140.202:25784'; 
+  const ip = '5.83.140.202:25784';
   const element = document.getElementById('playerCount');
-
-  // Если вдруг элемент не найден, прерываем функцию
   if (!element) return;
-
-  // Используем API mcsrvstat.us
   fetch(`https://api.mcsrvstat.us/3/${ip}`)
     .then(response => {
       if (!response.ok) throw new Error('Network response was not ok');
@@ -49,28 +62,22 @@ function updateRealPlayerCount() {
     })
     .then(data => {
       if (data.online === true) {
-        // Сервер онлайн, берем количество игроков
         const playersOnline = data.players ? data.players.online : 0;
         element.textContent = playersOnline;
-        element.style.color = ''; // Сбрасываем цвет на дефолтный (если меняли)
+        element.style.color = '';
       } else {
-        // Сервер выключен
         element.textContent = 'OFF';
-        element.style.color = '#ff3cac'; // Делаем текст розовым/красным
+        element.style.color = '#ff3cac';
       }
     })
     .catch(error => {
       console.error('Ошибка получения онлайна:', error);
-      // Если API не отвечает, ставим знак вопроса
       element.textContent = '?';
     });
 }
 
-// Запускаем проверку сразу при загрузке страницы
 updateRealPlayerCount();
-// Обновляем каждую минуту (60000 миллисекунд)
 setInterval(updateRealPlayerCount, 60000);
-
 
 // ─── ПРОЯВЛЕНИЕ ЭЛЕМЕНТОВ ПРИ СКРОЛЛЕ ───
 const revealEls = document.querySelectorAll('.reveal');
@@ -113,15 +120,25 @@ function toggleMenu() {
   }
 }
 
-// ─── ДВИЖЕНИЕ ШАРОВ ЗА МЫШКОЙ (Исправлено) ───
+// ─── ДВИЖЕНИЕ ШАРОВ ЗА МЫШКОЙ ───
+let targetX = 0, targetY = 0;
+let currentX = 0, currentY = 0;
+
 document.addEventListener('mousemove', (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 20;
-  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+  targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+  targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+
+(function animateBlobs() {
+  currentX += (targetX - currentX) * 0.05;
+  currentY += (targetY - currentY) * 0.05;
+
   const blobs = document.querySelectorAll('.blob');
   blobs.forEach((b, i) => {
-    const factor = (i + 1) * 0.3;
-    // Используем setProperty, чтобы не ломать дефолтные css-анимации
-    b.style.left = `calc(${b.offsetLeft}px + ${x * factor}px)`;
-    b.style.top = `calc(${b.offsetTop}px + ${y * factor}px)`;
+    const strength = (i + 1) * 18;
+    b.style.setProperty('--mx', `${currentX * strength}px`);
+    b.style.setProperty('--my', `${currentY * strength}px`);
   });
-});
+
+  requestAnimationFrame(animateBlobs);
+})();

@@ -28,7 +28,9 @@
     <li><a href="#features">Особенности</a></li>
     <li><a href="#about">О сервере</a></li>
     <li><a href="#store">Донат</a></li>
-    <li><a href="https://discord.gg/fdmine" class="nav-cta">Наш Discord</a></li>
+    <!-- Новая кнопка Документации -->
+    <li><a href="https://docs.fdmine.ru" class="nav-docs" target="_blank">Документация</a></li>
+    <li><a href="https://discord.gg/fdmine" class="nav-cta" target="_blank">Наш Discord</a></li>
   </ul>
   <div class="nav-hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -57,12 +59,15 @@
   </p>
 
   <div class="hero-actions">
+    <a href="https://discord.gg/EhXRK4qqzs" class="btn-primary" target="_blank">
+      Начать играть
+      <svg class="btn-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
     <button class="btn-ip" id="copyBtn" onclick="copyIP()">
       <span class="ip-icon" id="ipIcon">⬡</span>
       <span class="ip-text" id="ipText">mc.fdmine.ru</span>
       <span style="font-size:0.78rem; color: var(--text-muted); font-weight:400;">Нажми, чтобы скопировать</span>
     </button>
-    <a href="#about" class="btn-secondary">↓ Исследовать мир</a>
   </div>
 
   <div class="hero-stats">
@@ -134,36 +139,109 @@
     </div>
 
 <a href="https://docs.fdmine.ru" class="docs-link reveal" target="_blank">
-    📚 Узнать больше о сервере
-  </a>
+  <span class="docs-icon">📚</span> 
+  <span>Узнать больше о сервере</span>
+  <svg class="docs-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
 </section>
 
-<!-- ─── О СЕРВЕРЕ ─── -->
+<!-- ─── FAQ ─── -->
 <section id="about">
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <div class="section-label">Атмосфера сервера</div>
-      <div class="section-title">Мир, где важен каждый</div>
-      <p><strong>FDMine</strong> — это продуманное пространство для тех, кто устал от хаотичных серверов-однодневок. Мы создаем экосистему, где приятно находиться, развиваться и общаться.</p>
-      <p>Здесь <strong>каждое решение имеет вес</strong>. Открывайте свое дело, взаимодействуйте с проработанной банковской системой, получайте документы и влияйте на экономику. Ваша история начинается с чистого листа.</p>
-    </div>
-    <div class="about-cards">
-      <div class="about-card reveal">
-        <div class="about-card-icon">💻</div>
-        <div class="about-card-text">
-          <h4>Самописные плагины</h4>
-          <p>Мы пишем уникальные плагины для сервера с нуля. Это гарантирует высокую оптимизацию, стабильный TPS и механики, которых вы не найдете на других проектах.</p>
-        </div>
+  <div class="faq-title reveal">
+    Ответы на <span class="faq-title-accent">вопросы</span>
+  </div>
+
+  <!-- Табы -->
+  <div class="faq-tabs reveal">
+    <button class="faq-tab active" onclick="switchTab('season')">Сезон</button>
+    <button class="faq-tab" onclick="switchTab('pass')">Проходка</button>
+    <button class="faq-tab" onclick="switchTab('server')">Сервер</button>
+  </div>
+
+  <!-- Сезон -->
+  <div class="faq-panel active" id="tab-season">
+    <div class="faq-grid">
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">📥</div>
+        <div class="faq-card-q">Когда был вайп?</div>
+        <div class="faq-card-a">Новый сезон начался xx.05.2026</div>
       </div>
-      <div class="about-card reveal">
-        <div class="about-card-icon">🤝</div>
-        <div class="about-card-text">
-          <h4>Игроки на первом месте</h4>
-          <p>Почти половина фишек сервера внедрена по идеям из тикетов в Discord. Мы читаем абсолютно всё.</p>
-        </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">📅</div>
+        <div class="faq-card-q">Сколько длится сезон?</div>
+        <div class="faq-card-a">Сезоны длятся примерно 4 месяца</div>
+      </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">🗺️</div>
+        <div class="faq-card-q">Какой размер карты?</div>
+        <div class="faq-card-a">Во всех мирах по 10к блоков</div>
+      </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">💾</div>
+        <div class="faq-card-q">Сохраняется ли прогресс после вайпа?</div>
+        <div class="faq-card-a">Нет, каждый сезон вы начинаете с чистого листа</div>
+      </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">🏆</div>
+        <div class="faq-card-q">Есть ли итоги сезона?</div>
+        <div class="faq-card-a">Итоги формируются на основе финальных позиций в лидерборде</div>
       </div>
     </div>
   </div>
+
+  <!-- Проходка -->
+  <div class="faq-panel" id="tab-pass">
+    <div class="faq-grid">
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">🎫</div>
+        <div class="faq-card-q">Как получить проходку?</div>
+        <div class="faq-card-a">Проходку можно получить бесплатно, подав заявку на нашем Discord-сервере</div>
+      </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">⏳</div>
+        <div class="faq-card-q">Как долго действует проходка?</div>
+        <div class="faq-card-a">Она бессрочная и останется с вами навсегда</div>
+      </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">🎁</div>
+        <div class="faq-card-q">Что даёт проходка?</div>
+        <div class="faq-card-a">Проходка дает доступ к игре на сервере</div>
+      </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">👥</div>
+        <div class="faq-card-q">Проходка передаётся другому игроку?</div>
+        <div class="faq-card-a">Нет, проходку нельзя передать или подарить</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Сервер -->
+  <div class="faq-panel" id="tab-server">
+    <div class="faq-grid">
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">🖥️</div>
+        <div class="faq-card-q">Какая версия сервера?</div>
+        <div class="faq-card-a">Сервер поддерживает все актуальные версии Java Edition — 1.21.х.</div>
+      </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">📶</div>
+        <div class="faq-card-q">Какой адрес сервера?</div>
+        <div class="faq-card-a">mc.fdmine.ru - скопируйте и вставьте в Minecraft.</div>
+      </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">⚙️</div>
+        <div class="faq-card-q">Поддерживает ли сервер Bedrock Edition?</div>
+        <div class="faq-card-a">Нет, сервер не поддерживает Bedrock издание, но для игры с телефона вы можете использовать Pojav Launcher.</div>
+      </div>
+      <div class="faq-card reveal">
+        <div class="faq-card-icon">🔒</div>
+        <div class="faq-card-q">Нужна ли лицензия?</div>
+        <div class="faq-card-a">Нет, вы можете играть как с лицензии, так и с любого пиратского лаунчера</div>
+      </div>
+      </div>
+    </div>
 </section>
 
 <!-- ─── ТИЗЕР МАГАЗИНА ─── -->
@@ -177,7 +255,7 @@
       <div class="perk-chip"><span class="chip-dot" style="background:#00f5ff;"></span>Кастомный Визуал</div>
       <div class="perk-chip"><span class="chip-dot" style="background:#10ffa0;"></span>Развлекательные фичи</div>
     </div>
-    <a href="https://store.fdmine.net" class="btn-store">⚡ Перейти в магазин</a>
+    <a href="https://discord.gg/VRJH3CRjt4" class="btn-store">⚡ Перейти в магазин</a>
   </div>
 </section>
 

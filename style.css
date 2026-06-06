@@ -205,6 +205,20 @@ nav {
   box-shadow: var(--glow-cyan);
 }
 
+.nav-docs {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+}
+
+.nav-docs:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(168, 85, 247, 0.4); /* Фиолетовый акцент при наведении */
+  box-shadow: var(--glow-purple); /* Мягкое фиолетовое свечение */
+  color: #fff !important;
+}
+
 .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
 .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-secondary); border-radius: 2px; transition: 0.3s; }
 
@@ -330,6 +344,38 @@ nav {
 .btn-ip .ip-icon { font-size: 1.1rem; transition: transform 0.2s; }
 .btn-ip.copied { border-color: rgba(16,255,160,0.6); box-shadow: 0 0 40px rgba(16,255,160,0.3); }
 .btn-ip.copied .ip-icon { transform: scale(1.3); }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #9863e7, #c084fc);
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #060810;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+  box-shadow: 0 8px 32px rgba(152,99,231,0.35);
+  letter-spacing: 0.01em;
+}
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 16px 48px rgba(152,99,231,0.5);
+}
+.btn-primary:hover .btn-arrow {
+  transform: translateX(3px);
+}
+.btn-arrow {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
 
 .btn-secondary {
   display: flex;
@@ -788,25 +834,65 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 32px;
-  padding: 28px 32px;
-  background: var(--glass);
+  gap: 12px;
+  margin-top: 40px;
+  padding: 24px 32px;
+  /* Легкий градиентный фон вместо скучного серого */
+  background: linear-gradient(135deg, rgba(152,99,231,0.12) 0%, rgba(0,245,255,0.05) 100%);
   backdrop-filter: var(--blur);
   -webkit-backdrop-filter: var(--blur);
-  border: 1px solid var(--glass-border);
+  /* Рамка с легким фиолетовым оттенком */
+  border: 1px solid rgba(152,99,231,0.35);
   border-radius: var(--radius-lg);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: all 0.3s;
-}
-.docs-link:hover {
-  border-color: rgba(152,99,231,0.4);
+  
+  /* Делаем текст ярким и читабельным */
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--text-primary);
-  box-shadow: 0 0 40px rgba(152,99,231,0.15);
-  transform: translateY(-2px);
+  text-decoration: none;
+  
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 0 20px rgba(152,99,231,0.05);
+}
+
+/* Эффект блика, пролетающего по кнопке */
+.docs-link::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: skewX(-20deg);
+  transition: 0.6s ease;
+}
+
+.docs-link .docs-icon {
+  font-size: 1.3rem;
+}
+
+.docs-link .docs-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Красивое свечение и анимация при наведении */
+.docs-link:hover {
+  border-color: rgba(0,245,255,0.5);
+  color: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3), var(--glow-cyan);
+}
+
+.docs-link:hover::before {
+  left: 150%;
+}
+
+.docs-link:hover .docs-arrow {
+  transform: translateX(4px);
 }
 
 /* ─── DECORATIVE LINES ─── */
@@ -826,4 +912,132 @@ footer {
 .deco-line-2 {
   background: linear-gradient(90deg, transparent, rgba(168,85,247,0.10), transparent);
   top: 65%;
+}
+/* ─── FAQ ─── */
+#about {
+  max-width: 1160px;
+}
+
+.faq-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 36px;
+  color: var(--text-primary);
+}
+.faq-title-accent {
+  background: linear-gradient(135deg, #9863e7, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.faq-tabs {
+  display: inline-flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 5px;
+  margin-bottom: 40px;
+}
+
+.faq-tab {
+  padding: 9px 24px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.90rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.faq-tab:hover {
+  color: var(--text-primary);
+}
+.faq-tab.active {
+  background: linear-gradient(135deg, #9863e7, #c084fc);
+  color: #fff;
+  font-weight: 600;
+}
+
+.faq-panel {
+  display: none;
+  opacity: 0;
+}
+.faq-panel.active {
+  display: block;
+  animation: faqFadeIn 0.22s ease forwards;
+}
+.faq-panel.fading {
+  animation: faqFadeOut 0.18s ease forwards;
+}
+@keyframes faqFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes faqFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-6px); }
+}
+
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.faq-card {
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 24px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.faq-card:hover {
+  border-color: rgba(152,99,231,0.35);
+  transform: translateY(-3px);
+}
+
+.faq-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(152,99,231,0.15);
+  border: 1px solid rgba(152,99,231,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.faq-card-q {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.faq-card-a {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+@media (max-width: 900px) {
+  .faq-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-tabs { width: 100%; justify-content: center; }
 }
