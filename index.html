@@ -3,14 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FDMine — Твой новый мир</title>
+<title>FDMine — Minecraft сервер Vanilla + RP</title>
+<meta name="description" content="FDMine — Minecraft Java сервер в стиле Vanilla + RP. Уникальная экономика, ролевое управление, кастомные механики. Заходи и стань частью мира FDMine!">
+<meta name="keywords" content="FDMine, майнкрафт сервер, minecraft server, vanilla rp, FDMine сервер, minecraft java, fdmine.ru">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://fdmine.ru/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="FDMine — Minecraft сервер Vanilla + RP">
+<meta property="og:description" content="FDMine — Minecraft Java сервер в стиле Vanilla + RP. Уникальная экономика, ролевое управление, кастомные механики.">
+<meta property="og:url" content="https://fdmine.ru/">
+<meta property="og:site_name" content="FDMine">
+<meta property="og:locale" content="ru_RU">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FDMine — Minecraft сервер Vanilla + RP">
+<meta name="twitter:description" content="FDMine — Minecraft Java сервер в стиле Vanilla + RP. Уникальная экономика, ролевое управление, кастомные механики.">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  .feature-icon i { font-size: 1.5rem; line-height: 1; }
+  .feature-card.wide .feature-icon i { font-size: 1.8rem; }
+  .step-icon-sm i { font-size: 1.3rem; line-height: 1; }
+  .phi-icon i { font-size: 1.5rem; line-height: 1; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "FDMine",
+  "url": "https://fdmine.ru/",
+  "description": "Minecraft сервер Vanilla + RP. Уникальная экономика, ролевое управление, кастомные механики."
+}
+</script>
 </head>
 <body>
 
-<!-- Жидкие шары на фоне -->
 <div class="blobs">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
@@ -23,21 +54,21 @@
 
 <!-- ─── НАВИГАЦИЯ ─── -->
 <nav>
-  <div class="nav-logo">FDMine</div>
+  <a class="nav-logo" href="#hero">FDMine</a>
   <ul class="nav-links">
+    <li><a href="#howto">Как войти</a></li>
     <li><a href="#features">Особенности</a></li>
-    <li><a href="#about">О сервере</a></li>
+    <li><a href="#about">FAQ</a></li>
     <li><a href="#store">Донат</a></li>
-    <!-- Новая кнопка Документации -->
-    <li><a href="https://docs.fdmine.ru" class="nav-docs" target="_blank">Документация</a></li>
-    <li><a href="https://discord.gg/fdmine" class="nav-cta" target="_blank">Наш Discord</a></li>
+    <li><a href="docs/" class="nav-docs">Документация</a></li>
+    <li><a href="https://discord.gg/EhXRK4qqzs" class="nav-cta" target="_blank">Наш Discord</a></li>
   </ul>
   <div class="nav-hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
 </nav>
 
-<!-- ─── ГЛАВНЫЙ ЭКРАН ─── -->
+<!-- ─── HERO ─── -->
 <section id="hero">
   <div class="hero-deco">
     <div class="deco-line"></div>
@@ -61,21 +92,19 @@
   <div class="hero-actions">
     <a href="https://discord.gg/EhXRK4qqzs" class="btn-primary" target="_blank">
       Начать играть
-      <svg class="btn-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="btn-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
     <button class="btn-ip" id="copyBtn" onclick="copyIP()">
       <span class="ip-icon" id="ipIcon">⬡</span>
       <span class="ip-text" id="ipText">mc.fdmine.ru</span>
-      <span style="font-size:0.78rem; color: var(--text-muted); font-weight:400;">Нажми, чтобы скопировать</span>
+      <span class="ip-hint">Нажми, чтобы скопировать</span>
     </button>
   </div>
 
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-value live" id="playerCount">247</div>
-      <div class="stat-label">
-        <span class="online-indicator"><span class="online-dot"></span>В игре сейчас</span>
-      </div>
+      <div class="stat-value live" id="playerCount">—</div>
+      <div class="stat-label"><span class="online-indicator"><span class="online-dot"></span>В игре сейчас</span></div>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-item">
@@ -90,70 +119,167 @@
   </div>
 </section>
 
+<!-- ─── КАК НАЧАТЬ ─── -->
+<section id="howto">
+  <div class="howto-inner">
+    <div class="howto-head reveal">
+      <div class="section-label">Первые шаги</div>
+      <h2 class="section-title">Войти просто</h2>
+      <p class="section-desc">Четыре шага — и ты уже в игре.</p>
+    </div>
+
+    <div class="steps-list">
+      <div class="step-item reveal">
+        <div class="step-left">
+          <div class="step-num-big">01</div>
+        </div>
+        <div class="step-right">
+          <div class="step-icon-sm"><i class="ti ti-brand-discord"></i></div>
+          <div>
+            <div class="step-title">Зайди в Discord</div>
+            <div class="step-body">Наш сервер — центр жизни FDMine. Там анонсы, помощь и комьюнити.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-left">
+          <div class="step-num-big">02</div>
+        </div>
+        <div class="step-right">
+          <div class="step-icon-sm"><i class="ti ti-clipboard-list"></i></div>
+          <div>
+            <div class="step-title">Подай заявку</div>
+            <div class="step-body">Заполни форму в Discord — сервер работает по проходке. Это бесплатно.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-left">
+          <div class="step-num-big">03</div>
+        </div>
+        <div class="step-right">
+          <div class="step-icon-sm"><i class="ti ti-download"></i></div>
+          <div>
+            <div class="step-title">Установи сборку</div>
+            <div class="step-body">Мы предлагаем официальную сборку майнкрафт с Modrinth. Она необязательна.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-left">
+          <div class="step-num-big">04</div>
+        </div>
+        <div class="step-right">
+          <div class="step-icon-sm"><i class="ti ti-device-gamepad-2"></i></div>
+          <div>
+            <div class="step-title">Введи адрес</div>
+            <div class="step-body">Добавь <code>mc.fdmine.ru</code> в список серверов и жми «Подключиться».</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="howto-cta reveal">
+      <a href="https://discord.gg/EhXRK4qqzs" class="btn-primary" target="_blank">
+        Подать заявку в Discord
+        <svg class="btn-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ПРИНЦИПЫ ─── -->
+<section id="philosophy">
+  <div class="phi-head reveal">
+    <div class="section-label">Наши принципы</div>
+    <h2 class="section-title">Сервер, где<br><span class="phi-accent">правила работают</span></h2>
+  </div>
+  <div class="phi-row">
+    <div class="phi-item reveal">
+      <span class="phi-icon"><i class="ti ti-shield-check"></i></span>
+      <div class="phi-item-title">Без гриферства</div>
+      <div class="phi-item-desc">Разрушение чужих построек и кража — нарушения закона. Нарушителей штрафуют.</div>
+    </div>
+    <div class="phi-sep reveal"></div>
+    <div class="phi-item reveal">
+      <span class="phi-icon"><i class="ti ti-masks-theater"></i></span>
+      <div class="phi-item-title">Живая ролевая игра</div>
+      <div class="phi-item-desc">Здесь свои законы, полиция и суды. Ты можешь просто развивать город или влиять на политику целых миров — каждый выбор имеет значение.</div>
+    </div>
+    <div class="phi-sep reveal"></div>
+    <div class="phi-item reveal">
+      <span class="phi-icon"><i class="ti ti-scale"></i></span>
+      <div class="phi-item-title">Честная экономика</div>
+      <div class="phi-item-desc">Никакой покупки ресурсов или прав за реальные деньги. Донат — это только косметика. Всё решает твое умение торговать и договариваться.</div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── ОСОБЕННОСТИ ─── -->
 <section id="features">
   <div class="features-header reveal">
     <div class="section-label">Что мы предлагаем</div>
-    <div class="section-title">Создано для тех,<br>кто хочет большего</div>
+    <h2 class="section-title">Создано для тех,<br>кто хочет большего</h2>
     <p class="section-desc">Каждая деталь проработана вручную. Каждая механика настроена до идеала.</p>
   </div>
 
-<div class="features-grid">
+  <div class="features-grid">
     <div class="feature-card wide reveal">
-      <div class="feature-icon icon-cyan">🏦</div>
+      <div class="feature-icon icon-cyan"><i class="ti ti-building-bank"></i></div>
       <div>
         <div class="feature-name">Банковская система</div>
-        <div class="feature-desc">Открывайте личный банковский счёт, выбирайте тариф, пополняйте и снимайте средства, переводите другим игрокам. Полноценная финансовая система прямо в игре.</div>
+        <div class="feature-desc">Управляй финансами через кастомный интерфейс. Открывай счета, выбирай выгодные тарифы, переводи средства друзьям и оплачивай услуги прямо в игре.</div>
       </div>
     </div>
-
+    
     <div class="feature-card card-emerald reveal">
-      <div class="feature-icon icon-emerald">💹</div>
+      <div class="feature-icon icon-emerald"><i class="ti ti-trending-up"></i></div>
       <div class="feature-name">Живая Экономика</div>
-      <div class="feature-desc">Рынок управляется самими игроками. Торгуйте ресурсами, скупайте алмазы или станьте самым богатым магнатом сервера. Экономика реагирует на спрос.</div>
+      <div class="feature-desc">Рынок полностью в руках игроков. Цены зависят от реального спроса и предложения. Скупай ресурсы, открывай магазины и строй свою торговую империю.</div>
     </div>
-
+    
     <div class="feature-card card-purple reveal">
-      <div class="feature-icon icon-purple">🪙</div>
+      <div class="feature-icon icon-purple"><i class="ti ti-coin"></i></div>
       <div class="feature-name">Система коинов</div>
-      <div class="feature-desc">Зарабатывай коины игровым путём — абсолютно бесплатно. Трать их на уникальные эффекты и косметику. Никакого доната — только скилл и активность.</div>
+      <div class="feature-desc">Получай внутриигровую валюту за активность и трать её на кастомный визуал. Никакого доната — только твое время, скилл и преданность делу.</div>
     </div>
-
+    
     <div class="feature-card card-pink reveal">
-      <div class="feature-icon icon-pink">⚖️</div>
+      <div class="feature-icon icon-pink"><i class="ti ti-gavel"></i></div>
       <div class="feature-name">Законы и штрафы</div>
-      <div class="feature-desc">Нарушил закон — получи штраф в АР (алмазная глубинносланцевая руда). На сервере действует реальная правовая система с полицией, судьями и советами миров.</div>
+      <div class="feature-desc">Правонарушения караются материально. Преступил закон — плати штраф в АР. За порядком следят полиция, суды и советы миров.</div>
     </div>
-
+    
     <div class="feature-card reveal">
-      <div class="feature-icon icon-amber">🏆</div>
+      <div class="feature-icon icon-amber"><i class="ti ti-trophy"></i></div>
       <div class="feature-name">Лидерборды</div>
-      <div class="feature-desc">Рейтинги по коинам, достижениям и наигранному времени. Докажи, что ты лучший — не в бою, а в развитии.</div>
+      <div class="feature-desc">Глобальные топы по коинам, выполненным ачивкам и онлайну. Докажи всему серверу свое превосходство в мирном развитии и экономике.</div>
     </div>
-
+    
     <div class="feature-card card-emerald reveal">
-      <div class="feature-icon icon-emerald">📖</div>
-      <div class="feature-name">BlazeAndCave — 1000+ достижений</div>
-      <div class="feature-desc">Датапак с более чем тысячей уникальных достижений. Исследуй, выполняй задачи и открывай то, чего нет в ванильном Minecraft.</div>
+      <div class="feature-icon icon-emerald"><i class="ti ti-checkup-list"></i></div>
+      <div class="feature-name">BlazeAndCave — 1000+ ачивок</div>
+      <div class="feature-desc">Огромный пак кастомных достижений, который полностью меняет подход к игре. Исследуй мир, выполняй сложные челенджи и открывай скрытый контент.</div>
     </div>
-    </div>
+  </div>
 
-<a href="https://docs.fdmine.ru" class="docs-link reveal" target="_blank">
-  <span class="docs-icon">📚</span> 
-  <span>Узнать больше о сервере</span>
-  <svg class="docs-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</a>
+  <a href="docs/" class="docs-link reveal">
+    <span class="docs-icon">📚</span>
+    <span>Узнать больше о сервере</span>
+    <svg class="docs-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
 </section>
 
 <!-- ─── FAQ ─── -->
 <section id="about">
-  <div class="faq-title reveal">
-    Ответы на <span class="faq-title-accent">вопросы</span>
+  <div class="faq-head reveal">
+    <div class="section-label">Частые вопросы</div>
+    <h2 class="faq-title">Ответы на <span class="faq-title-accent">вопросы</span></h2>
   </div>
 
-  <!-- Табы -->
   <div class="faq-tabs reveal">
     <button class="faq-tab active" onclick="switchTab('season')">Сезон</button>
     <button class="faq-tab" onclick="switchTab('pass')">Проходка</button>
@@ -161,90 +287,120 @@
   </div>
 
   <!-- Сезон -->
-  <div class="faq-panel active" id="tab-season">
-    <div class="faq-grid">
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">📥</div>
-        <div class="faq-card-q">Когда был вайп?</div>
-        <div class="faq-card-a">Новый сезон начался 11.05.2026</div>
-      </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">📅</div>
-        <div class="faq-card-q">Сколько длится сезон?</div>
-        <div class="faq-card-a">Сезоны длятся примерно 4 месяца</div>
-      </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">🗺️</div>
-        <div class="faq-card-q">Какой размер карты?</div>
-        <div class="faq-card-a">Во всех мирах по 10к блоков</div>
-      </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">💾</div>
-        <div class="faq-card-q">Сохраняется ли прогресс после вайпа?</div>
-        <div class="faq-card-a">Нет, каждый сезон вы начинаете с чистого листа</div>
-      </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">🏆</div>
-        <div class="faq-card-q">Есть ли итоги сезона?</div>
-        <div class="faq-card-a">Итоги формируются на основе финальных позиций в лидерборде</div>
-      </div>
+<div class="faq-panel active" id="tab-season">
+  <div class="accordion">
+    <div class="acc-item reveal">
+      <button class="acc-q" onclick="toggleAcc(this)">
+        <span>Когда был вайп?</span>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="acc-a">Текущий сезон стартовал 11.05.2026. Мир совсем свежий — самое время заходить и строить свои планы.</div>
+    </div>
+    
+    <div class="acc-item reveal">
+      <button class="acc-q" onclick="toggleAcc(this)">
+        <span>Сколько длится сезон?</span>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="acc-a">Ориентируемся на 4 месяца. Этого времени хватает, чтобы полностью реализовать масштабные проекты, не увязая в рутине.</div>
+    </div>
+    
+    <div class="acc-item reveal">
+      <button class="acc-q" onclick="toggleAcc(this)">
+        <span>Какой размер карты?</span>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="acc-a">Граница установлена на 10 000 блоков во всех трех мирах. Места хватит всем, но при этом игроки не рассеиваются по бесконечной карте.</div>
+    </div>
+    
+    <div class="acc-item reveal">
+      <button class="acc-q" onclick="toggleAcc(this)">
+        <span>Сохраняется ли прогресс после вайпа?</span>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="acc-a">Нет, вайп — это полное обнуление. Каждый сезон мы начинаем с чистого листа в равных условиях, что возвращает в игру самый драйв.</div>
+    </div>
+    
+    <div class="acc-item reveal">
+      <button class="acc-q" onclick="toggleAcc(this)">
+        <span>Есть ли итоги сезона?</span>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="acc-a">Да, мы фиксируем финальные результаты в лидерборде. Самые активные игроки, заработавшие больше всего коинов и ачивок, навсегда вписывают свои ники в историю сервера.</div>
     </div>
   </div>
+</div>
 
   <!-- Проходка -->
   <div class="faq-panel" id="tab-pass">
-    <div class="faq-grid">
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">🎫</div>
-        <div class="faq-card-q">Как получить проходку?</div>
-        <div class="faq-card-a">Проходку можно получить бесплатно, подав заявку на нашем Discord-сервере</div>
+    <div class="accordion">
+      <div class="acc-item reveal">
+        <button class="acc-q" onclick="toggleAcc(this)">
+          <span>Как получить проходку?</span>
+          <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="acc-a">Проходку можно получить бесплатно, подав заявку на нашем Discord-сервере</div>
       </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">⏳</div>
-        <div class="faq-card-q">Как долго действует проходка?</div>
-        <div class="faq-card-a">Она бессрочная и останется с вами навсегда</div>
+      <div class="acc-item reveal">
+        <button class="acc-q" onclick="toggleAcc(this)">
+          <span>Как долго действует проходка?</span>
+          <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="acc-a">Она бессрочная и останется с вами навсегда</div>
       </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">🎁</div>
-        <div class="faq-card-q">Что даёт проходка?</div>
-        <div class="faq-card-a">Проходка дает доступ к игре на сервере</div>
+      <div class="acc-item reveal">
+        <button class="acc-q" onclick="toggleAcc(this)">
+          <span>Что даёт проходка?</span>
+          <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="acc-a">Проходка дает доступ к игре на сервере</div>
       </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">👥</div>
-        <div class="faq-card-q">Проходка передаётся другому игроку?</div>
-        <div class="faq-card-a">Нет, проходку нельзя передать или подарить</div>
+      <div class="acc-item reveal">
+        <button class="acc-q" onclick="toggleAcc(this)">
+          <span>Проходка передаётся другому игроку?</span>
+          <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="acc-a">Нет, проходку нельзя передать или подарить</div>
       </div>
     </div>
   </div>
 
   <!-- Сервер -->
   <div class="faq-panel" id="tab-server">
-    <div class="faq-grid">
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">🖥️</div>
-        <div class="faq-card-q">Какая версия сервера?</div>
-        <div class="faq-card-a">Сервер поддерживает все актуальные версии Java Edition — 1.21.х.</div>
+    <div class="accordion">
+      <div class="acc-item reveal">
+        <button class="acc-q" onclick="toggleAcc(this)">
+          <span>Какая версия сервера?</span>
+          <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="acc-a">Сервер поддерживает все актуальные версии Java Edition — 1.21.х.</div>
       </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">📶</div>
-        <div class="faq-card-q">Какой адрес сервера?</div>
-        <div class="faq-card-a">mc.fdmine.ru - скопируйте и вставьте в Minecraft.</div>
+      <div class="acc-item reveal">
+        <button class="acc-q" onclick="toggleAcc(this)">
+          <span>Какой адрес сервера?</span>
+          <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="acc-a">mc.fdmine.ru — скопируйте и вставьте в Minecraft.</div>
       </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">⚙️</div>
-        <div class="faq-card-q">Поддерживает ли сервер Bedrock Edition?</div>
-        <div class="faq-card-a">Нет, сервер не поддерживает Bedrock издание, но для игры с телефона вы можете использовать Pojav Launcher.</div>
+      <div class="acc-item reveal">
+        <button class="acc-q" onclick="toggleAcc(this)">
+          <span>Поддерживает ли сервер Bedrock Edition?</span>
+          <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="acc-a">Нет, сервер не поддерживает Bedrock издание, но для игры с телефона вы можете использовать Pojav Launcher.</div>
       </div>
-      <div class="faq-card reveal">
-        <div class="faq-card-icon">🔒</div>
-        <div class="faq-card-q">Нужна ли лицензия?</div>
-        <div class="faq-card-a">Нет, вы можете играть как с лицензии, так и с любого пиратского лаунчера</div>
-      </div>
+      <div class="acc-item reveal">
+        <button class="acc-q" onclick="toggleAcc(this)">
+          <span>Нужна ли лицензия?</span>
+          <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="acc-a">Нет, вы можете играть как с лицензии, так и с любого пиратского лаунчера</div>
       </div>
     </div>
+  </div>
 </section>
 
-<!-- ─── ТИЗЕР МАГАЗИНА ─── -->
+<!-- ─── МАГАЗИН ─── -->
 <section id="store">
   <div class="store-banner reveal">
     <div class="section-label">Поддержать проект</div>
@@ -263,13 +419,13 @@
 <footer>
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 FDMine. Not affiliated with Mojang Studios.</div>
+    </button>
     <div class="footer-badge">Сделано с <span>♥</span> для игроков</div>
   </div>
 </footer>
 
 </div>
 
-<!-- Уведомление -->
 <div class="toast" id="toast">✓ IP скопирован в буфер обмена!</div>
 
 <script src="script.js"></script>

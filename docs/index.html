@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Документация — FDMine | Minecraft сервер Vanilla + RP</title>
+<meta name="description" content="Полная документация сервера FDMine: как начать играть, механики, экономика, роли, команды, правила, Premium и коины. Minecraft сервер Vanilla + RP.">
+<meta name="keywords" content="FDMine, FDMine документация, FDMine wiki, майнкрафт сервер, minecraft server, FDMine сервер, vanilla rp minecraft">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://fdmine.ru/docs/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Документация — FDMine">
+<meta property="og:description" content="Полная документация сервера FDMine: механики, экономика, роли, команды и многое другое.">
+<meta property="og:url" content="https://fdmine.ru/docs/">
+<meta property="og:site_name" content="FDMine">
+<meta property="og:locale" content="ru_RU">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Документация — FDMine">
+<meta name="twitter:description" content="Полная документация сервера FDMine: механики, экономика, роли, команды и многое другое.">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="docs.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  .doc-nav-icon i { font-size: 1rem; line-height: 1; vertical-align: -2px; }
+  .doc-note-icon i { font-size: 1.1rem; line-height: 1; }
+  .doc-item-icon i { font-size: 1.4rem; line-height: 1; }
+  .doc-link-icon i { font-size: 1.5rem; line-height: 1; }
+  .doc-title i { font-size: 0.9em; vertical-align: -3px; margin-right: 6px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Документация FDMine",
+  "url": "https://fdmine.ru/docs/",
+  "description": "Полная документация сервера FDMine: механики, экономика, роли, команды, правила.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://fdmine.ru/"
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+  <div class="blob blob-5"></div>
+</div>
+
+<div class="wrapper">
+
+<!-- ─── НАВИГАЦИЯ ─── -->
+<nav>
+  <a href="../index.html" class="nav-logo">FDMine</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#howto">Как войти</a></li>
+    <li><a href="#" class="nav-docs">Документация</a></li>
+    <li><a href="https://discord.gg/EhXRK4qqzs" class="nav-cta" target="_blank">Наш Discord</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── DOCS SHELL ─── -->
+<div class="doc-shell">
+
+  <!-- ─── SIDEBAR ─── -->
+  <button class="doc-sidebar-toggle" id="doc-sidebar-toggle" onclick="toggleDocSidebar()">
+    <span><i class="ti ti-books"></i> Разделы документации</span>
+    <svg class="doc-toggle-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <aside class="doc-sidebar" id="doc-sidebar">
+    <div class="doc-sidebar-title"><i class="ti ti-books"></i> Документация FDMine</div>
+
+    <!-- ─── ПОИСК ─── -->
+    <div class="doc-search-wrap">
+      <svg class="doc-search-icon" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M13 13L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <input class="doc-search-input" id="doc-search" type="text" placeholder="Поиск по документации…" oninput="searchDocs(this.value)" autocomplete="off">
+      <button class="doc-search-clear" id="doc-search-clear" onclick="clearDocSearch()" title="Очистить">✕</button>
+    </div>
+    <div class="doc-search-results" id="doc-search-results"></div>
+
+    <div class="doc-nav-group">
+      <div class="doc-nav-group-title">Начало</div>
+      <a href="#info" class="doc-nav-link" data-page="info"><span class="doc-nav-icon"><i class="ti ti-world"></i></span>О сервере</a>
+      <a href="#rules" class="doc-nav-link" data-page="rules"><span class="doc-nav-icon"><i class="ti ti-shield-check"></i></span>Правила сервера</a>
+      <a href="#start" class="doc-nav-link" data-page="start"><span class="doc-nav-icon"><i class="ti ti-rocket"></i></span>Как начать играть</a>
+      <a href="#connect" class="doc-nav-link" data-page="connect"><span class="doc-nav-icon"><i class="ti ti-plug-connected"></i></span>Подключение и фиксы</a>
+      <a href="#modpack" class="doc-nav-link" data-page="modpack"><span class="doc-nav-icon"><i class="ti ti-device-desktop"></i></span>Сборка сервера</a>
+      <a href="#links" class="doc-nav-link" data-page="links"><span class="doc-nav-icon"><i class="ti ti-link"></i></span>Полезные ссылки</a>
+      <a href="#faq" class="doc-nav-link" data-page="faq"><span class="doc-nav-icon"><i class="ti ti-help-circle"></i></span>FAQ</a>
+    </div>
+
+    <div class="doc-nav-group">
+      <div class="doc-nav-group-title">Игровой процесс</div>
+      <a href="#economy" class="doc-nav-link" data-page="economy"><span class="doc-nav-icon"><i class="ti ti-cash"></i></span>Экономика</a>
+      <a href="#chat" class="doc-nav-link" data-page="chat"><span class="doc-nav-icon"><i class="ti ti-message-circle"></i></span>Чат</a>
+      <a href="#voice" class="doc-nav-link" data-page="voice"><span class="doc-nav-icon"><i class="ti ti-microphone"></i></span>Голосовой чат</a>
+      <a href="#mechanics" class="doc-nav-link" data-page="mechanics"><span class="doc-nav-icon"><i class="ti ti-tool"></i></span>Механики и предметы</a>
+    </div>
+
+    <div class="doc-nav-group">
+      <div class="doc-nav-group-title">Справочники</div>
+      <a href="#laws" class="doc-nav-link" data-page="laws"><span class="doc-nav-icon"><i class="ti ti-scale"></i></span>Законы и наказания</a>
+      <a href="#roles" class="doc-nav-link" data-page="roles"><span class="doc-nav-icon"><i class="ti ti-crown"></i></span>Роли и структура</a>
+      <a href="#achievements" class="doc-nav-link" data-page="achievements"><span class="doc-nav-icon"><i class="ti ti-trophy"></i></span>Достижения и лидерборды</a>
+      <a href="#commands" class="doc-nav-link" data-page="commands"><span class="doc-nav-icon"><i class="ti ti-list"></i></span>Команды</a>
+    </div>
+
+    <div class="doc-nav-group">
+      <div class="doc-nav-group-title">Косметика и бонусы</div>
+      <a href="#coins" class="doc-nav-link" data-page="coins"><span class="doc-nav-icon"><i class="ti ti-coin"></i></span>Коины</a>
+      <a href="#premium" class="doc-nav-link" data-page="premium"><span class="doc-nav-icon"><i class="ti ti-star"></i></span>Premium</a>
+    </div>
+  </aside>
+
+  <!-- ─── CONTENT ─── -->
+  <div class="doc-content">
+    <!-- Мобильный заголовок текущего раздела (хлебная крошка) -->
+    <div class="doc-breadcrumb" id="doc-breadcrumb"></div>
+
+<!-- ОБ СЕРВЕРЕ -->
+    <div class="doc-page" id="page-info">
+
+      <h1 class="doc-title"><i class="ti ti-world"></i> О сервере</h1>
+      <p class="doc-text">
+        <strong>FDMine</strong> — это ванильное полу-РП выживание, где игровой процесс полностью управляется самими игроками. Мы объединили свободную торговлю, рабочие законы с реальными судами и кастомные механики, чтобы создать живой и независимый мир. Переходи по разделам меню, чтобы узнать, как устроена каждая система.
+      </p>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-shield"></i></span>
+        <div>
+          Присоединяйся к нашему <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a>, отправь заявку, прочитай правила и ознакомься с полезными гайдами на этом сайте — всё просто!
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- IP -->
+      <div class="doc-h2">IP сервера</div>
+      <p class="doc-text">Основной IP сервера:</p>
+      <p class="doc-text">
+        <button class="footer-ip-btn ip-btn-highlight" onclick="copyIP()" title="Скопировать IP"><span class="footer-ip-dot"></span><span>mc.fdmine.ru</span></button>
+      </p>
+      <p class="doc-text">Запасные IP могут пригодиться, если вы испытываете большой пинг или проблемы с подключением через основной:</p>
+      <ul class="doc-list">
+        <li><code>play.fdmine.ru</code></li>
+        <li><code>game.fdmine.ru</code></li>
+      </ul>
+
+      <hr class="doc-divider">
+
+      <!-- Версия -->
+      <div class="doc-h2">Версия сервера</div>
+      <p class="doc-text">Ядро сервера — <strong>1.21.11</strong>. Поддерживаются клиенты версий <strong>1.21 – 1.21.11</strong>, но рекомендуем использовать <em>1.21.11</em> для полной совместимости.</p>
+    </div>
+
+    <!-- КАК НАЧАТЬ ИГРАТЬ -->
+    <div class="doc-page" id="page-start">
+      <h1 class="doc-title"><i class="ti ti-rocket"></i> Как начать играть</h1>
+      <p class="doc-text">
+        Готов начать? Вот всё, что нужно сделать перед первым входом.
+      </p>
+      <ol class="doc-steps">
+        <li><strong>Зайди в Discord-сервер.</strong> Это центр сообщества — здесь анонсы, заявки и поддержка.</li>
+        <li><strong>Подай заявку на проходку.</strong> Заполни простую форму и дождись ответа от администрации</li>
+        <li><strong>Начни играть!</strong> Приятной игры (˶ᵔ ᵕ ᵔ˶)</li>
+      </ol>
+      <div class="doc-note warn">
+        <span class="doc-note-icon"><i class="ti ti-alert-triangle"></i></span>
+        <div>Загриферили?! - Заходи в наш <a href="https://discord.com/channels/950455724562075668/1509143397619728434" target="_blank">Discord</a>, напиши заявление, мы разберемся с грифером и все восстановим</div>
+      </div>
+    </div>
+
+    <!-- ПРАВИЛА СЕРВЕРА -->
+    <div class="doc-page" id="page-rules">
+
+      <div class="doc-banner b-pink">
+        <span class="doc-banner-icon"><i class="ti ti-shield-check" style="font-size:2.4rem;"></i></span>
+        <span class="doc-banner-label">Правила сервера FDMine</span>
+      </div>
+
+      <h1 class="doc-title"><i class="ti ti-shield-check"></i> Правила сервера</h1>
+      <p class="doc-text">
+        Присоединяясь к FDMine, вы соглашаетесь с настоящими правилами. Они распространяются на всех участников — независимо от роли и статуса. Незнание правил не освобождает от ответственности.
+      </p>
+
+      <!-- Быстрая навигация -->
+      <div class="rules-nav">
+        <a href="#" onclick="event.preventDefault(); document.getElementById('rule-1').scrollIntoView({behavior:'smooth'})" class="rules-nav-item"><i class="ti ti-info-circle"></i> Основные положения</a>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('rule-2').scrollIntoView({behavior:'smooth'})" class="rules-nav-item"><i class="ti ti-user"></i> Игровой аккаунт</a>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('rule-3').scrollIntoView({behavior:'smooth'})" class="rules-nav-item"><i class="ti ti-sword"></i> Нечестная игра</a>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('rule-4').scrollIntoView({behavior:'smooth'})" class="rules-nav-item"><i class="ti ti-alert-triangle"></i> Помехи игровому процессу</a>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('rule-5').scrollIntoView({behavior:'smooth'})" class="rules-nav-item"><i class="ti ti-heart-broken"></i> Вред сообществу</a>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('rule-6').scrollIntoView({behavior:'smooth'})" class="rules-nav-item"><i class="ti ti-message-x"></i> Неуважительное общение</a>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('rule-7').scrollIntoView({behavior:'smooth'})" class="rules-nav-item"><i class="ti ti-speakerphone"></i> Реклама</a>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('rule-8').scrollIntoView({behavior:'smooth'})" class="rules-nav-item"><i class="ti ti-message-off"></i> Нежелательные сообщения</a>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── ПРАВИЛО 1 ── -->
+      <div class="rule-section" id="rule-1">
+        <div class="rule-header">
+          <div class="rule-number">1</div>
+          <div class="rule-header-text">
+            <div class="rule-title">Основные положения</div>
+            <div class="rule-subtitle">Базовые условия участия на сервере</div>
+          </div>
+        </div>
+        <div class="rule-cards">
+          <div class="rule-card">
+            <div class="rule-card-icon"><i class="ti ti-writing"></i></div>
+            <div class="rule-card-body">
+              <div class="rule-card-title">Согласие с правилами</div>
+              <div class="rule-card-text">Присоединяясь к серверу, вы автоматически принимаете все действующие правила. Незнание правил не освобождает от ответственности.</div>
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-card-icon"><i class="ti ti-refresh"></i></div>
+            <div class="rule-card-body">
+              <div class="rule-card-title">Изменение правил</div>
+              <div class="rule-card-text">Правила могут быть изменены в любой момент без предварительного уведомления. Следите за актуальной версией.</div>
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-card-icon"><i class="ti ti-clipboard-check"></i></div>
+            <div class="rule-card-body">
+              <div class="rule-card-title">Рассмотрение заявок</div>
+              <div class="rule-card-text">Администрация вправе отказать в доступе к серверу на этапе заявки, если она заполнена некорректно или по другим объективным причинам.</div>
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-card-icon"><i class="ti ti-cash-off"></i></div>
+            <div class="rule-card-body">
+              <div class="rule-card-title">Возврат средств</div>
+              <div class="rule-card-text">Возврат средств за покупку Premium или иных услуг не производится.</div>
+            </div>
+          </div>
+        </div>
+        <div class="rule-punishments">
+          <div class="rule-punishments-label"><i class="ti ti-gavel"></i> Возможные наказания за нарушения правил</div>
+          <div class="rule-punishment-list">
+            <div class="rule-punishment-item rp-warn"><i class="ti ti-alert-circle"></i> Предупреждение</div>
+            <div class="rule-punishment-item rp-confiscate"><i class="ti ti-package-off"></i> Изъятие предметов</div>
+            <div class="rule-punishment-item rp-annul"><i class="ti ti-star-off"></i> Аннулирование привилегий</div>
+            <div class="rule-punishment-item rp-mute"><i class="ti ti-microphone-off"></i> Мут</div>
+            <div class="rule-punishment-item rp-ban"><i class="ti ti-ban"></i> Бан</div>
+          </div>
+          <p class="doc-text" style="margin-top:12px; margin-bottom:0; font-size:0.88rem;">Наказание может быть смягчено в зависимости от конкретных обстоятельств нарушения.</p>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── ПРАВИЛО 2 ── -->
+      <div class="rule-section" id="rule-2">
+        <div class="rule-header">
+          <div class="rule-number">2</div>
+          <div class="rule-header-text">
+            <div class="rule-title">Игровой аккаунт</div>
+            <div class="rule-subtitle">Ответственность за аккаунт и никнейм</div>
+          </div>
+        </div>
+        <p class="doc-text">Никому не передавайте данные от своего аккаунта. Вы несёте полную ответственность за все действия, совершённые под вашим именем.</p>
+        <div class="rule-forbidden-list">
+          <div class="rule-forbidden-item"><i class="ti ti-transfer"></i><span>Передача аккаунта третьим лицам</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-currency-dollar-off"></i><span>Покупка, продажа или обмен аккаунтов, предметов и услуг за внеигровые ценности</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-users-group"></i><span>Использование дополнительных аккаунтов, в том числе для обхода ограничений или получения преимуществ</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-face-id-error"></i><span>Оскорбительные никнеймы, провокационные скины, символика экстремистских организаций</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-copy-off"></i><span>Полное или частичное копирование никнеймов или скинов других игроков и Администрации с целью ввести в заблуждение</span></div>
+        </div>
+        <div class="rule-verdict">
+          <div class="rule-verdict-icon rp-ban"><i class="ti ti-ban"></i></div>
+          <div>
+            <div class="rule-verdict-label">Наказание</div>
+            <div class="rule-verdict-value">Предупреждение → Бан от 1 дня до постоянного</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── ПРАВИЛО 3 ── -->
+      <div class="rule-section" id="rule-3">
+        <div class="rule-header">
+          <div class="rule-number">3</div>
+          <div class="rule-header-text">
+            <div class="rule-title">Нечестная игра</div>
+            <div class="rule-subtitle">Читы, баги, запрещённые модификации</div>
+          </div>
+        </div>
+        <p class="doc-text">Запрещено использование и распространение любых модификаций, программ или уязвимостей, дающих нечестное преимущество.</p>
+        <div class="rule-forbidden-list">
+          <div class="rule-forbidden-item"><i class="ti ti-code"></i><span>Использование или распространение читов, макросов, скриптов, дюпов, багов</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-map-pin"></i><span>Мини-карты с отображением пещер, точек смерти и сущностей</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-clock-off"></i><span>Механизмы и модификации для AFK-рыбалки</span></div>
+        </div>
+        <div class="doc-note" style="max-width:760px;">
+          <span class="doc-note-icon"><i class="ti ti-check"></i></span>
+          <div><strong>Исключения:</strong> дюп динамита и ковров разрешён. Если обнаружили баг или уязвимость — сообщите Администрации, не используйте в своих целях.</div>
+        </div>
+        <div class="rule-verdict">
+          <div class="rule-verdict-icon rp-ban"><i class="ti ti-ban"></i></div>
+          <div>
+            <div class="rule-verdict-label">Наказание</div>
+            <div class="rule-verdict-value">Предупреждение → Изъятие → Бан от 1 дня до постоянного</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── ПРАВИЛО 4 ── -->
+      <div class="rule-section" id="rule-4">
+        <div class="rule-header">
+          <div class="rule-number">4</div>
+          <div class="rule-header-text">
+            <div class="rule-title">Создание помех игровому процессу</div>
+            <div class="rule-subtitle">Гриферство, кража, ПВП без оснований</div>
+          </div>
+        </div>
+        <p class="doc-text">Запрещены любые действия, причиняющие вред игрокам, их имуществу или общественной инфраструктуре.</p>
+        <div class="rule-forbidden-list">
+          <div class="rule-forbidden-item"><i class="ti ti-building-fortress"></i><span>Уничтожение или повреждение чужого имущества</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-package-import"></i><span>Кража чужого имущества</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-sword"></i><span>Нападение на игроков или убийство без оснований</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-barrier-block"></i><span>Действия на чужой территории, создающие помехи владельцу (блокирование прохода, порча ландшафта и т.д.), игнорируя требование прекратить их</span></div>
+        </div>
+        <div class="doc-note" style="max-width:760px;">
+          <span class="doc-note-icon"><i class="ti ti-check"></i></span>
+          <div><strong>Исключения для ПВП:</strong> самооборона, защита своего имущества, договорённость между игроками.</div>
+        </div>
+        <div class="rule-verdict">
+          <div class="rule-verdict-icon rp-ban"><i class="ti ti-ban"></i></div>
+          <div>
+            <div class="rule-verdict-label">Наказание</div>
+            <div class="rule-verdict-value">УК FDMine → Бан от 1 дня до постоянного</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── ПРАВИЛО 5 ── -->
+      <div class="rule-section" id="rule-5">
+        <div class="rule-header">
+          <div class="rule-number">5</div>
+          <div class="rule-header-text">
+            <div class="rule-title">Причинение вреда сообществу</div>
+            <div class="rule-subtitle">Серьёзные нарушения — самые строгие наказания</div>
+          </div>
+        </div>
+        <p class="doc-text">Категорически запрещены действия, способные причинить реальный вред игрокам, Администрации или серверу.</p>
+        <div class="rule-forbidden-list">
+          <div class="rule-forbidden-item"><i class="ti ti-link"></i><span>Распространение мошеннических или вредоносных ссылок</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-server-off"></i><span>Попытки нарушить работу сервера</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-lock-open"></i><span>Попытки взлома аккаунтов игроков или Администрации</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-id-off"></i><span>Сбор или распространение личных данных других людей без их согласия</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-flame"></i><span>Призывы к опасным, противозаконным действиям или нарушению правил</span></div>
+        </div>
+        <div class="rule-verdict">
+          <div class="rule-verdict-icon rp-ban"><i class="ti ti-ban"></i></div>
+          <div>
+            <div class="rule-verdict-label">Наказание</div>
+            <div class="rule-verdict-value">Бан от 3 дней до постоянного</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── ПРАВИЛО 6 ── -->
+      <div class="rule-section" id="rule-6">
+        <div class="rule-header">
+          <div class="rule-number">6</div>
+          <div class="rule-header-text">
+            <div class="rule-title">Неуважительное общение</div>
+            <div class="rule-subtitle">Оскорбления, угрозы, разжигание ненависти</div>
+          </div>
+        </div>
+        <div class="rule-forbidden-list">
+          <div class="rule-forbidden-item"><i class="ti ti-mood-angry"></i><span>Угрозы, оскорбления, клевета в адрес игроков, Администрации и их близких</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-heart-off"></i><span>Разжигание ненависти по признакам пола, расы, национальности, языка, религии или сексуальной ориентации</span></div>
+        </div>
+        <div class="rule-verdict">
+          <div class="rule-verdict-icon rp-mute"><i class="ti ti-microphone-off"></i></div>
+          <div>
+            <div class="rule-verdict-label">Наказание</div>
+            <div class="rule-verdict-value">Предупреждение → Мут до 24 часов</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── ПРАВИЛО 7 ── -->
+      <div class="rule-section" id="rule-7">
+        <div class="rule-header">
+          <div class="rule-number">7</div>
+          <div class="rule-header-text">
+            <div class="rule-title">Реклама</div>
+            <div class="rule-subtitle">Продвижение сторонних ресурсов</div>
+          </div>
+        </div>
+        <div class="rule-forbidden-list">
+          <div class="rule-forbidden-item"><i class="ti ti-speakerphone"></i><span>Продвижение любым способом сторонних серверов, чатов, каналов без согласования с Администрацией</span></div>
+        </div>
+        <div class="rule-verdict">
+          <div class="rule-verdict-icon rp-ban"><i class="ti ti-ban"></i></div>
+          <div>
+            <div class="rule-verdict-label">Наказание</div>
+            <div class="rule-verdict-value">Предупреждение → Бан до 30 дней</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── ПРАВИЛО 8 ── -->
+      <div class="rule-section" id="rule-8">
+        <div class="rule-header">
+          <div class="rule-number">8</div>
+          <div class="rule-header-text">
+            <div class="rule-title">Нежелательные сообщения</div>
+            <div class="rule-subtitle">Спам, капслок, попрошайничество</div>
+          </div>
+        </div>
+        <div class="rule-forbidden-list">
+          <div class="rule-forbidden-item"><i class="ti ti-message-2-off"></i><span>Многократная отправка бессмысленных или повторяющихся сообщений (спам) в глобальном чате</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-letter-case-upper"></i><span>Злоупотребление написанием прописными буквами (капслок) в глобальном чате</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-hand"></i><span>Попрошайничество, в том числе просьбы о реальных деньгах</span></div>
+        </div>
+        <div class="rule-verdict">
+          <div class="rule-verdict-icon rp-mute"><i class="ti ti-microphone-off"></i></div>
+          <div>
+            <div class="rule-verdict-label">Наказание</div>
+            <div class="rule-verdict-value">Предупреждение → Мут до 1 часа</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-message-question"></i></span>
+        <div>Возникли вопросы или столкнулись с нарушением? Обращайтесь в <a href="https://discord.gg/EhXRK4qqzs" target="_blank">службу поддержки Discord</a>.</div>
+      </div>
+
+    </div>
+
+    <!-- ПОЛЕЗНЫЕ ССЫЛКИ -->
+    <div class="doc-page" id="page-links">
+      <h1 class="doc-title"><i class="ti ti-link"></i> Полезные ссылки</h1>
+      <p class="doc-text">
+        Все важные ссылки, советуем ознакомиться
+      </p>
+      <div class="doc-links-grid">
+        <a href="https://discord.gg/EhXRK4qqzs" class="doc-link-card l-purple" target="_blank">
+          <div class="doc-link-icon"><i class="ti ti-brand-discord"></i></div>
+          <div class="doc-link-text">
+            <div class="doc-link-title">Discord-сервер</div>
+            <div class="doc-link-desc">Сообщество, заявки, поддержка и новости</div>
+          </div>
+          <svg class="doc-link-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://t.me/dargosh_channel" class="doc-link-card l-cyan" target="_blank">
+          <div class="doc-link-icon"><i class="ti ti-brand-telegram"></i></div>
+          <div class="doc-link-text">
+            <div class="doc-link-title">Telegram-канал</div>
+            <div class="doc-link-desc">Оповещения о стримах, новости</div>
+          </div>
+          <svg class="doc-link-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://discord.gg/VRJH3CRjt4" class="doc-link-card l-emerald" target="_blank">
+          <div class="doc-link-icon"><i class="ti ti-shopping-bag"></i></div>
+          <div class="doc-link-text">
+            <div class="doc-link-title">Магазин</div>
+            <div class="doc-link-desc">Premium-подписка и вся информация о командах</div>
+          </div>
+          <svg class="doc-link-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://twitch.tv/dargosh_" class="doc-link-card l-pink" target="_blank">
+          <div class="doc-link-icon"><i class="ti ti-brand-twitch"></i></div>
+          <div class="doc-link-text">
+            <div class="doc-link-title">Twitch</div>
+            <div class="doc-link-desc">Стримы по серверу</div>
+          </div>
+          <svg class="doc-link-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+      <div class="doc-page" id="page-modpack">
+
+      <h1 class="doc-title"><i class="ti ti-device-desktop"></i> Сборка сервера</h1>
+      <p class="doc-text">
+        <strong>FDMPack</strong> — официальная сборка для игры на сервере FDMine. Лёгкая, оптимизированная, близкая к ванили — с плавным FPS, улучшенной картинкой и голосовым чатом прямо из коробки.
+      </p>
+
+      <a href="https://modrinth.com/modpack/fdmpack" class="doc-link-card l-emerald" target="_blank" style="max-width:440px; margin-bottom: 32px;">
+        <div class="doc-link-icon"><i class="ti ti-package"></i></div>
+        <div class="doc-link-text">
+          <div class="doc-link-title">FDMPack на Modrinth</div>
+          <div class="doc-link-desc">Скачать последнюю версию сборки</div>
+        </div>
+        <svg class="doc-link-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <hr class="doc-divider">
+
+      <div class="doc-h2">Что внутри сборки</div>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-bolt"></i></span>
+          <div class="doc-item-name">Оптимизация</div>
+          <div class="doc-item-desc">Sodium и другие перформанс-моды — стабильный FPS даже на слабых ПК</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-palette"></i></span>
+          <div class="doc-item-name">Ресурспак KSEPSP</div>
+          <div class="doc-item-desc">Улучшенная графика в ванильном стиле без ущерба для производительности</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-microphone"></i></span>
+          <div class="doc-item-name">PlasmoVoice</div>
+          <div class="doc-item-desc">Голосовой чат с другими игроками прямо в игре — без сторонних программ</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon">🕺</span>
+          <div class="doc-item-name">EmoteCraft</div>
+          <div class="doc-item-desc">Анимации, позы и эмоции — другие игроки видят их в реальном времени</div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-h2">Как установить</div>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
+        <div>Для установки сборки понадобится <strong>Modrinth App</strong> — бесплатный лаунчер, который сам скачает все моды и настроит профиль.</div>
+      </div>
+
+      <ol class="doc-steps">
+        <li><strong>Скачай Modrinth App</strong> — <a href="https://modrinth.com/app" target="_blank">modrinth.com/app</a>. Установи и открой.</li>
+        <li><strong>Перейди на страницу сборки</strong> — <a href="https://modrinth.com/modpack/fdmpack" target="_blank">modrinth.com/modpack/fdmpack</a> — и нажми <strong>«Install»</strong>. Modrinth App откроется автоматически.</li>
+        <li><strong>Дождись установки</strong> — лаунчер скачает все моды и создаст отдельный профиль FDMPack.</li>
+        <li><strong>Запусти игру</strong> из Modrinth App и подключись к серверу по IP <code>mc.fdmine.ru</code>.</li>
+      </ol>
+
+      <div class="doc-note warn">
+        <span class="doc-note-icon"><i class="ti ti-alert-triangle"></i></span>
+        <div>Сборка работает на <strong>Minecraft: Java Edition 1.21.11</strong>. Другие версии (Bedrock, PE) не поддерживаются.</div>
+      </div>
+
+    </div>
+
+    <!-- ЭКОНОМИКА -->
+    <div class="doc-page" id="page-economy">
+
+      <h1 class="doc-title"><i class="ti ti-cash"></i> Экономика</h1>
+      <p class="doc-text">
+        Цены на FDMine формируют сами игроки. Рынок полностью свободен и зависит только от реального спроса, предложения и твоих навыков торговли.
+      </p>
+
+      <div class="doc-subtitle">Валюта — АР</div>
+      <p class="doc-text">
+        Основная валюта сервера — <strong>Алмазная глубинносланцевая Руда (АР)</strong>. Это обычный ванильный предмет: добывай его в шахтах, храни в инвентаре или переводи через банк другим игрокам.
+      </p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-pickaxe"></i></span>
+          <div class="doc-item-name">Майнинг</div>
+          <div class="doc-item-desc">Добывай АР в шахтах — самый простой способ получить валюту</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-handshake"></i></span>
+          <div class="doc-item-name">Торговля</div>
+          <div class="doc-item-desc">Продавай ресурсы и предметы другим игрокам</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-building-community"></i></span>
+          <div class="doc-item-name">Гос. зарплата</div>
+          <div class="doc-item-desc">Сотрудники государственных структур получают АР за работу</div>
+        </div>
+      </div>
+
+      <div class="doc-subtitle">На что тратить</div>
+      <ul class="doc-list">
+        <li>Покупка ресурсов и предметов у других игроков</li>
+        <li>Приобретение территории и земельных участков</li>
+        <li>Оплата штрафов, назначенных судом</li>
+      </ul>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle"><i class="ti ti-building-bank"></i> Банк — <code>/bank</code></div>
+      <p class="doc-text">Безопасное хранение АР, переводы и история операций.</p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-credit-card"></i></span>
+          <div class="doc-item-name">Пополнение и снятие</div>
+          <div class="doc-item-desc">Клади АР на личный счёт для безопасности или забирай обратно в инвентарь.</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-send"></i></span>
+          <div class="doc-item-name">Переводы</div>
+          <div class="doc-item-desc">Отправляй средства на счета других игроков по никнейму за пару кликов.</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-clipboard-list"></i></span>
+          <div class="doc-item-name">История транзакций</div>
+          <div class="doc-item-desc">Отслеживай все свои операции: сколько, когда и кому ты перевёл.</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-scale"></i></span>
+          <div class="doc-item-name">Оплата штрафов</div>
+          <div class="doc-item-desc">Штрафы, назначенные судом, оплачиваются прямо через банк</div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle"><i class="ti ti-calculator"></i> Подсчёт АР — <code>/ar</code></div>
+      <p class="doc-text">Команда <code>/ar</code> мгновенно считает, сколько АР у тебя есть в разных местах.</p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-backpack"></i></span>
+          <div class="doc-item-name">Инвентарь</div>
+          <div class="doc-item-desc">Считает АР в твоём текущем инвентаре</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-package"></i></span>
+          <div class="doc-item-name">Контейнер</div>
+          <div class="doc-item-desc">Смотри на сундук или другой контейнер — команда считает АР внутри</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-box"></i></span>
+          <div class="doc-item-name">Эндер-сундук</div>
+          <div class="doc-item-desc">Показывает АР в твоём личном эндер-сундуке</div>
+        </div>
+      </div>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-briefcase"></i></span>
+        <div>За экономикой следит <strong>Министр экономики</strong> — Должность одного из игроков. Все вопросы по зарплатам, установленным ценам, спорам — к нему в Discord или в игре.</div>
+      </div>
+
+    </div>
+
+    <!-- ЗАКОНЫ -->
+    <div class="doc-page" id="page-laws">
+
+      <h1 class="doc-title"><i class="ti ti-scale"></i> Законы и наказания</h1>
+      <p class="doc-text">
+        На FDMine действует внутренняя правовая система. За нарушение правил и законов игрок может получить штраф от <strong>Судьи</strong> или <strong>Совета мира</strong>.
+      </p>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle"><i class="ti ti-receipt"></i> Система штрафов</div>
+      <p class="doc-text">Каждый штраф имеет уникальный номер в формате <code>#0001</code>, <code>#0002</code> и так далее. Оплата производится валютой сервера — АР.</p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-hash"></i></span>
+          <div class="doc-item-name">Нумерация</div>
+          <div class="doc-item-desc">Каждому штрафу присваивается уникальный номер — удобно для обжалования</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-archive"></i></span>
+          <div class="doc-item-name">Хранение</div>
+          <div class="doc-item-desc">После оплаты штраф хранится ещё 14 дней, затем автоматически удаляется</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-clock"></i></span>
+          <div class="doc-item-name">Просрочка</div>
+          <div class="doc-item-desc">При просрочке штраф удваивается, срок продлевается на 3 дня</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-gavel"></i></span>
+          <div class="doc-item-name">Повторная просрочка</div>
+          <div class="doc-item-desc">Дело передаётся на рассмотрение реальному Судье</div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Команды для игроков</div>
+
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr><th>Команда</th><th>Описание</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="doc-cmd">/fines</td>
+              <td>Открыть меню своих штрафов — номер, причина, сумма. Если на Банковском счету достаточно АР, штраф можно оплатить сразу</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="doc-note warn">
+        <span class="doc-note-icon"><i class="ti ti-alert-triangle"></i></span>
+        <div>Загриферили?! - Заходи в наш <a href="https://discord.com/channels/950455724562075668/1509143397619728434" target="_blank">Discord</a>, напиши заявление, мы разберемся с грифером и все восстановим</div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Команды Судьи и Совета мира</div>
+      <p class="doc-text">Следующие команды доступны только уполномоченным лицам:</p>
+
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr><th>Команда</th><th>Описание</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="doc-cmd">/fine &lt;ник&gt; &lt;сумма&gt; &lt;срок&gt; &lt;причина&gt;</td>
+              <td>Выписать штраф игроку. Максимум — 1024 АР. Срок указывается в днях, например <code>3d</code></td>
+            </tr>
+            <tr>
+              <td class="doc-cmd">/viewfines &lt;ник&gt;</td>
+              <td>Просмотреть все штрафы игрока — номера, суммы, причины и сроки</td>
+            </tr>
+            <tr>
+              <td class="doc-cmd">/cancelfine &lt;ID&gt;</td>
+              <td>Отменить штраф по его уникальному номеру</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
+        <div>Пример: <code>/fine aszane 32 3d Оскорбление судьи</code> — выпишет штраф 32 АР на 3 дня с указанной причиной.</div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle"><i class="ti ti-shield-star"></i> Полицейский</div>
+      <p class="doc-text">
+        Полицейские — уполномоченные игроки, которые следят за порядком и расследуют нарушения. В их распоряжении инструменты <strong>логи блоков</strong> — серверная система записи всех взаимодействий с миром.
+      </p>
+
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr><th>Команда</th><th>Описание</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="doc-cmd">/co i</td>
+              <td>Режим инспекции: нажми на блок или контейнер, чтобы увидеть, кто и когда с ним взаимодействовал</td>
+            </tr>
+            <tr>
+              <td class="doc-cmd">/co near</td>
+              <td>Показать все взаимодействия игроков с блоками в ближайшем радиусе</td>
+            </tr>
+            <tr>
+              <td class="doc-cmd">/pinvsee &lt;ник&gt;</td>
+              <td>Осмотреть инвентарь игрока — доступно только в непосредственной близости от него</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-search"></i></span>
+        <div>логи блоков фиксирует все действия: установку и ломание блоков, открытие сундуков, перенос предметов. Эти данные — основное доказательство при расследовании краж и гриферства.</div>
+      </div>
+
+    </div>
+
+    <!-- ЧАТ -->
+    <div class="doc-page" id="page-chat">
+
+      <h1 class="doc-title"><i class="ti ti-message-circle"></i> Чат</h1>
+      <p class="doc-text">На FDMine есть два режима чата и множество удобных инструментов для общения.</p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-map-pin"></i></span>
+          <div class="doc-item-name">Локальный чат</div>
+          <div class="doc-item-desc">Сообщения видны только игрокам в радиусе <strong>100 блоков</strong>. Используется по умолчанию</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-world"></i></span>
+          <div class="doc-item-name">Глобальный чат</div>
+          <div class="doc-item-desc">Виден всем на сервере. Начни сообщение с <code>!</code> — например, <code>!Привет всем</code></div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Личные сообщения</div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/msg &lt;ник&gt; &lt;текст&gt;</td><td>Отправить личное сообщение игроку (также: <code>/w</code>, <code>/tell</code>, <code>/m</code>)</td></tr>
+            <tr><td class="doc-cmd">/r &lt;текст&gt;</td><td>Ответить последнему отправителю ЛС</td></tr>
+            <tr><td class="doc-cmd">/ignore add &lt;ник&gt;</td><td>Добавить игрока в игнор-лист</td></tr>
+            <tr><td class="doc-cmd">/ignore remove &lt;ник&gt;</td><td>Убрать игрока из игнор-листа</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Теги в чате</div>
+      <p class="doc-text">Введи тег прямо в сообщение — другие игроки увидят интерактивную подсказку при наведении.</p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-sword"></i></span>
+          <div class="doc-item-name"><code>[item]</code></div>
+          <div class="doc-item-desc">Показывает предмет, который держишь в руке</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-map"></i></span>
+          <div class="doc-item-name"><code>[pos]</code></div>
+          <div class="doc-item-desc">Отображает твои текущие координаты</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-trophy"></i></span>
+          <div class="doc-item-name"><code>[adv]</code></div>
+          <div class="doc-item-desc">Показывает количество твоих достижений</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-stopwatch"></i></span>
+          <div class="doc-item-name"><code>[pt]</code></div>
+          <div class="doc-item-desc">Отображает наигранное время в часах</div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Мини-профиль</div>
+      <p class="doc-text">Наведи курсор на <strong>никнейм</strong> игрока в чате — появится краткая информация о нём. Нажми <strong>ПКМ по нику</strong>, чтобы сразу написать ему личное сообщение.</p>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Эмодзи — <code>/emojis</code></div>
+      <p class="doc-text">Введи <code>/emojis</code>, чтобы увидеть все доступные кастомные эмодзи. Их можно вставлять в чат, на наковальне и на табличках.</p>
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-star"></i></span>
+        <div>Игроки с подпиской <strong>Premium</strong> могут использовать эмодзи в сообщениях о входе и выходе с сервера.</div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle"><i class="ti ti-brand-discord"></i> Интеграция с Discord</div>
+      <p class="doc-text">
+        Глобальный чат сервера связан с каналом <strong>#чат</strong> в нашем Discord — можно общаться с игроками прямо оттуда, не заходя в игру.
+      </p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-upload"></i></span>
+          <div class="doc-item-name">Из игры в Discord</div>
+          <div class="doc-item-desc">Начни сообщение с <code>!</code> — оно автоматически отправится в #чат Discord</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-download"></i></span>
+          <div class="doc-item-name">Из Discord в игру</div>
+          <div class="doc-item-desc">Сообщения из канала #чат отображаются в глобальном чате Minecraft</div>
+        </div>
+      </div>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-settings"></i></span>
+        <div>Не хочешь видеть сообщения из Discord в чате? Отключи их в <code>/cfg</code> → «Сообщения из Discord».</div>
+      </div>
+
+    </div>
+
+    <!-- ГОЛОСОВОЙ ЧАТ -->
+    <div class="doc-page" id="page-voice">
+
+      <h1 class="doc-title"><i class="ti ti-microphone"></i> Голосовой чат</h1>
+      <p class="doc-text">
+        На сервере установлен мод <strong>PlasmoVoice</strong> — голосовой чат прямо в игре, без сторонних программ. Входит в официальную сборку <a href="#modpack">FDMPack</a>.
+      </p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-microphone"></i></span>
+          <div class="doc-item-name">Близость</div>
+          <div class="doc-item-desc">Голос слышен только игрокам рядом — чем дальше, тем тише</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-speakerphone"></i></span>
+          <div class="doc-item-name">Без программ</div>
+          <div class="doc-item-desc">Не нужен Discord или TeamSpeak — всё работает внутри Minecraft</div>
+        </div>
+      </div>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
+        <div>PlasmoVoice уже включён в <strong>FDMPack</strong>. Если используешь другую сборку — установи мод вручную с <a href="https://modrinth.com/plugin/plasmo-voice" target="_blank">Modrinth</a>.</div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle"><i class="ti ti-vinyl"></i> Выжигание пластинок</div>
+      <p class="doc-text">
+        Аддон для PlasmoVoice, который позволяет записывать музыку с <strong>Youtube, SoundCloud</strong> на музыкальные пластинки прямо в игре. Проженную пластинку можно вставить в проигрыватель — другие игроки услышат музыку.
+      </p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-record-mail"></i></span>
+          <div class="doc-item-name">Выжигание</div>
+          <div class="doc-item-desc">Держи пластинку в руке и введи команду /disc burn — музыка запишется на диск</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-music"></i></span>
+          <div class="doc-item-name">Воспроизведение</div>
+          <div class="doc-item-desc">Вставь проженную пластинку в проигрыватель — окружающие услышат музыку</div>
+        </div>
+      </div>
+
+      <div style="margin: 12px 0 24px;">
+        <video autoplay loop muted playsinline style="max-width: 80%; border-radius: 12px; display: block;">
+          <source src="https://aszane.github.io/fdmine-assets/gif/disc.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+
+    <!-- МЕХАНИКИ И ПРЕДМЕТЫ -->
+    <div class="doc-page" id="page-mechanics">
+
+      <h1 class="doc-title"><i class="ti ti-tool"></i> Механики и предметы</h1>
+      <p class="doc-text">
+        Кастомные крафты, особые механики и персональные настройки — всё уникальное в одном месте.
+      </p>
+
+      <!-- ── БЛОК: КРАФТЫ ── -->
+      <div class="doc-h2"><i class="ti ti-layout-grid"></i> Кастомные крафты</div>
+
+      <div class="doc-grid" style="margin-top: 20px; grid-template-columns: repeat(2, minmax(220px, 1fr)); gap: 20px; align-items: start;">
+
+        <!-- Невидимый свет -->
+        <div>
+          <div class="doc-subtitle" style="margin-top: 0;">💡 Невидимый свет</div>
+          <p class="doc-text" style="margin-top: 4px;">Светит, но полностью невидим — для скрытой подсветки строений и мапартов.</p>
+          <img src="https://aszane.github.io/fdmine-assets/img/light.png" alt="Крафт невидимого света" style="max-width: 80%; border-radius: 10px; display: block; margin-top: 10px;">
+        </div>
+
+        <!-- Oko эндера -->
+        <div>
+          <div class="doc-subtitle" style="margin-top: 0;">👁️ Око эндера</div>
+          <p class="doc-text" style="margin-top: 4px;">Стандартный ванильный крафт не работает — используй серверный рецепт.</p>
+          <img src="https://aszane.github.io/fdmine-assets/img/ender.png" alt="Крафт ока эндера" style="max-width: 80%; border-radius: 10px; display: block; margin-top: 10px;">
+        </div>
+
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── БЛОК: МЕХАНИКИ ── -->
+      <div class="doc-h2"><i class="ti ti-settings-2"></i> Механики</div>
+
+      <!-- Невидимые рамки -->
+      <div class="doc-subtitle"><i class="ti ti-photo"></i> Невидимые рамки</div>
+      <p class="doc-text">Рамка становится невидимой, а сам предмет эстетично парит в воздухе.</p>
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-scissors"></i></span>
+        <div>Нажми <strong>ПКМ ножницами по рамке с предметом</strong> — рамка станет невидимой.</div>
+      </div>
+      <div style="margin: 12px 0 28px;">
+        <video autoplay loop muted playsinline style="max-width: 80%; border-radius: 12px; display: block;">
+          <source src="https://aszane.github.io/fdmine-assets/gif/ramka.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Защита карт -->
+      <div class="doc-subtitle"><i class="ti ti-shield-lock"></i> Защита карт и шаблонов — <code>/anticopy</code></div>
+      <p class="doc-text">Держи в руках нарисованную карту или заполненный шаблон и введи <code>/anticopy</code> — никто не сможет их скопировать.</p>
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-shield"></i></span>
+        <div>Особенно полезно для <strong>мапартов</strong> — защити свои работы от копирования одной командой.</div>
+      </div>
+      <div style="margin: 12px 0 28px;">
+        <video autoplay loop muted playsinline style="max-width: 80%; border-radius: 12px; display: block;">
+          <source src="https://aszane.github.io/fdmine-assets/gif/anticopy.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Подпись -->
+      <div class="doc-subtitle"><i class="ti ti-writing"></i> Подпись на предмете — <code>/sign</code></div>
+      <p class="doc-text">Держи предмет в руке и введи <code>/sign</code> — добавь личную подпись, которая отображается в описании предмета.</p>
+
+      <hr class="doc-divider">
+
+      <!-- ── БЛОК: ПОЗЫ ── -->
+      <div class="doc-h2"><i class="ti ti-user-circle"></i> Позы и анимации — GSit</div>
+      <p class="doc-text">Принимай разные позы прямо в игре — другие игроки видят их в реальном времени.</p>
+
+<div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(5, minmax(160px, 1fr));">
+          <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-armchair"></i></span>
+          <div class="doc-item-name"><code>/sit</code></div>
+          <div class="doc-item-desc">Сесть на блок</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-zzz"></i></span>
+          <div class="doc-item-name"><code>/lay</code></div>
+          <div class="doc-item-desc">Лечь на землю</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-arrows-diagonal-minimize"></i></span>
+          <div class="doc-item-name"><code>/crawl</code></div>
+          <div class="doc-item-desc">Ползти</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-rotate-clockwise"></i></span>
+          <div class="doc-item-name"><code>/spin</code></div>
+          <div class="doc-item-desc">Крутиться на месте</div>
+        </div>
+      </div>
+
+      <div style="margin: 16px 0 28px;">
+        <img src="https://aszane.github.io/fdmine-assets/img/pose.png" alt="Позы GSit" style="max-width: 80%; border-radius: 12px; display: block;">
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── БЛОК: НАСТРОЙКИ ИГРОКА ── -->
+      <div class="doc-h2"><i class="ti ti-adjustments"></i> Настройки игрока — <code>/cfg</code></div>
+      <p class="doc-text">Введи <code>/cfg</code>, чтобы открыть меню персональных переключателей. Каждый параметр включается и выключается независимо.</p>
+
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Параметр</th><th>Что делает</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">Глобальный чат</td><td>Скрывает сообщения, начинающиеся с <code>!</code></td></tr>
+            <tr><td class="doc-cmd">Локальный чат</td><td>Отключает сообщения игроков поблизости</td></tr>
+            <tr><td class="doc-cmd">Сообщения о смерти</td><td>Убирает уведомления о гибели других игроков</td></tr>
+            <tr><td class="doc-cmd">Сообщения из Discord</td><td>Скрывает уведомления, поступающие с Discord-сервера</td></tr>
+            <tr><td class="doc-cmd">Посадка на игроков</td><td>Запрещает другим садиться на тебя — и тебе на других</td></tr>
+            <tr><td class="doc-cmd">Звук ЛС</td><td>Отключает звук при получении личных сообщений</td></tr>
+            <tr><td class="doc-cmd">Уведомления из банка</td><td>Полностью убирает сообщения при получении перевода из Банка</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <!-- ПОДКЛЮЧЕНИЕ И ФИКСЫ -->
+    <div class="doc-page" id="page-connect">
+
+      <h1 class="doc-title"><i class="ti ti-plug-connected"></i> Подключение и фиксы</h1>
+      <p class="doc-text">
+        Полезные вещи, которые могут понадобиться при входе на сервер — смена статуса аккаунта и обход РКН-блокировок.
+      </p>
+
+      <hr class="doc-divider">
+
+      <!-- /premium -->
+      <div class="doc-subtitle"><i class="ti ti-star"></i> Лицензионный аккаунт — <code>/premium</code></div>
+      <p class="doc-text">
+        FDMine работает в режиме offline — войти можно как с пиратской, так и с лицензионной копией игры. Если у тебя лицензия, команда <code>/premium</code> переключает твой аккаунт в лицензионный режим: авторизация через Mojang, вход без ввода пароля через <code>/login</code> и прямое подключение на основной сервер.
+      </p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-lock-open"></i></span>
+          <div class="doc-item-name">Без /login</div>
+          <div class="doc-item-desc">Больше не нужно вводить пароль — авторизация происходит автоматически через серверы Mojang</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-bolt"></i></span>
+          <div class="doc-item-name">Прямой вход</div>
+          <div class="doc-item-desc">Сразу попадаешь на игровой сервер, минуя экран авторизации</div>
+        </div>
+      </div>
+
+      <div class="doc-note warn">
+        <span class="doc-note-icon"><i class="ti ti-alert-triangle"></i></span>
+        <div>Команда работает только если ник в игре совпадает с ником лицензионного аккаунта Mojang. Иначе вход будет заблокирован.</div>
+      </div>
+
+      <div class="doc-table-wrap" style="margin-top: 8px;">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/premium</td><td>Переключить аккаунт в лицензионный режим. Выполняется один раз — настройка сохраняется</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- РКН фикс -->
+      <div class="doc-subtitle"><i class="ti ti-shield-check"></i> Не можешь подключиться? Фикс для zapret</div>
+      <p class="doc-text">
+        Из-за РКН-блокировок некоторые игроки не могут подключиться к серверу напрямую. Если ты используешь <strong>zapret</strong> (zapret-discord-youtube или аналог) — нужно добавить порт сервера в стратегию вручную.
+      </p>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
+        <div>Это одноразовая настройка. После правки всё работает автоматически — больше ничего менять не нужно.</div>
+      </div>
+
+      <ol class="doc-steps">
+        <li>
+          <strong>Открой .bat-файл стратегии</strong> в любом текстовом редакторе — Блокнот, Notepad++ и т.д.
+        </li>
+        <li>
+          <strong>Найди строку</strong> начинающуюся с <code>--wf-tcp=</code> и добавь порт <code>10516</code> в конец списка:
+          <br><br>
+          <em>Было:</em><br>
+          <code>--wf-tcp=80,443,2053,2083,2087,2096,8443,</code><br><br>
+          <em>Стало:</em><br>
+          <code>--wf-tcp=80,443,2053,2083,2087,2096,8443,<strong>10516,</strong></code>
+        </li>
+        <li>
+          <strong>После этой строки добавь новую строку</strong> (перед следующим <code>--filter-tcp</code> или в конце блока):
+          <div style="margin-top: 10px; background: rgba(152,99,231,0.08); border: 1px solid rgba(152,99,231,0.25); border-radius: 10px; padding: 14px 16px; font-family: monospace; font-size: 13px; line-height: 1.7; word-break: break-all;">
+            --filter-tcp=10516 --ipset-exclude="%LISTS%ipset-exclude.txt" --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n5 --dpi-desync=multisplit --dpi-desync-split-seqovl=582 --dpi-desync-split-pos=1 --dpi-desync-split-seqovl-pattern="%BIN%tls_clienthello_4pda_to.bin" --new ^
+          </div>
+        </li>
+        <li>
+          <strong>Сохрани файл</strong> через <kbd>Ctrl + S</kbd>, перезапусти стратегию и подключайся к серверу.
+        </li>
+      </ol>
+
+      <div class="doc-note warn">
+        <span class="doc-note-icon"><i class="ti ti-alert-triangle"></i></span>
+        <div>Фикс актуален только для пользователей <strong>Windows</strong> с zapret. Если ты используешь другой обход блокировок — обратись за помощью в <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a>.</div>
+      </div>
+
+    </div>
+
+    <div class="doc-page" id="page-coins">
+
+      <h1 class="doc-title"><i class="ti ti-coin"></i> Коины</h1>
+      <p class="doc-text">Коины — внутренняя валюта для косметики. За них покупаются <strong>плевки с кастомными эффектами</strong>.</p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-droplet"></i></span>
+          <div class="doc-item-name"><code>/spit</code></div>
+          <div class="doc-item-desc">Плюнуть с активным эффектом</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-clipboard-list"></i></span>
+          <div class="doc-item-name"><code>/spitlist</code></div>
+          <div class="doc-item-desc">Посмотреть все доступные эффекты и их стоимость в коинах</div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Как получить коины</div>
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-device-gamepad"></i></span>
+          <div class="doc-item-name">Активная игра</div>
+          <div class="doc-item-desc">Каждый час онлайна приносит <strong>3 коина</strong> автоматически</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-users"></i></span>
+          <div class="doc-item-name">Реферальная система</div>
+          <div class="doc-item-desc">Укажи игрока, который тебя пригласил — оба получат коины</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-ticket"></i></span>
+          <div class="doc-item-name">Промокоды</div>
+          <div class="doc-item-desc">Используй промокоды от администрации командой <code>/promo use &lt;код&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-star"></i></span>
+        <div>Игроки с подпиской <strong>Premium</strong> получают коины за активность в <strong>двойном размере</strong> — 6 коинов в час.</div>
+      </div>
+
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="doc-page" id="page-premium">
+
+      <h1 class="doc-title"><i class="ti ti-star"></i> Premium</h1>
+      <p class="doc-text">
+        Premium-подписка открывает набор эксклюзивных команд, двойное начисление коинов и уникальный титул в чате и табе.
+      </p>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-credit-card"></i></span>
+        <div>Стоимость подписки — <strong>189 руб/месяц</strong>. Оформить можно через <a href="https://discord.gg/VRJH3CRjt4" target="_blank">магазин в Discord</a>.</div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Бонусы подписки</div>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-coin"></i></span>
+          <div class="doc-item-name">Коины ×2</div>
+          <div class="doc-item-desc">Удвоенное начисление коинов за активную игру — 6 вместо 3 в час</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-sparkles"></i></span>
+          <div class="doc-item-name">Титул «Звезды»</div>
+          <div class="doc-item-desc">Эксклюзивный титул отображается в чате и в табе рядом с ником</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-mood-smile"></i></span>
+          <div class="doc-item-name">Эмодзи в сообщениях</div>
+          <div class="doc-item-desc">Кастомные эмодзи можно ставить в сообщения при входе и выходе с сервера</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-settings"></i></span>
+          <div class="doc-item-name">Эксклюзивные команды</div>
+          <div class="doc-item-desc">Полный список доступных команд — в таблице ниже</div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Команды Premium</div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th><th>Кому доступно</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/sub</td><td>Личный кабинет — статус, дата истечения, звук уведомлений</td><td><span class="doc-badge doc-badge-all">👥 Всем</span></td></tr>
+            <tr><td class="doc-cmd">/sub info</td><td>Список команд, доступных обладателям Premium</td><td><span class="doc-badge doc-badge-all">👥 Всем</span></td></tr>
+            <tr><td class="doc-cmd">/hat</td><td>Надеть предмет из рук на голову</td><td><span class="doc-badge doc-badge-premium">⭐ Premium</span></td></tr>
+            <tr><td class="doc-cmd">/color</td><td>Сменить цвет своего ника</td><td><span class="doc-badge doc-badge-premium">⭐ Premium</span></td></tr>
+            <tr><td class="doc-cmd">/rename</td><td>Переименовать предмет в руке (стоимость — 10 уровней опыта)</td><td><span class="doc-badge doc-badge-premium">⭐ Premium</span></td></tr>
+            <tr><td class="doc-cmd">/setjoin</td><td>Установить своё сообщение при входе на сервер</td><td><span class="doc-badge doc-badge-premium">⭐ Premium</span></td></tr>
+            <tr><td class="doc-cmd">/resetjoin</td><td>Сбросить сообщение при входе до стандартного</td><td><span class="doc-badge doc-badge-premium">⭐ Premium</span></td></tr>
+            <tr><td class="doc-cmd">/setquit</td><td>Установить своё сообщение при выходе с сервера</td><td><span class="doc-badge doc-badge-premium">⭐ Premium</span></td></tr>
+            <tr><td class="doc-cmd">/resetquit</td><td>Сбросить сообщение при выходе до стандартного</td><td><span class="doc-badge doc-badge-premium">⭐ Premium</span></td></tr>
+            <tr><td class="doc-cmd">/kittycannon</td><td>Выстрел кошкой · перезарядка 4 сек</td><td><span class="doc-badge doc-badge-premium">⭐ Premium</span></td></tr>
+            <tr><td class="doc-cmd">/beezooka</td><td>Выстрел пчелой · перезарядка 4 сек</td><td><span class="doc-badge doc-badge-premium">⭐ Premium</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- /sub и /sub info -->
+      <div class="doc-subtitle"><i class="ti ti-id-badge"></i> Личный кабинет — <code>/sub</code></div>
+      <p class="doc-text">
+        Команда <code>/sub</code> открывает твой личный кабинет Premium. Здесь отображается актуальная информация о подписке.
+      </p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-circle-check"></i></span>
+          <div class="doc-item-name">Статус подписки</div>
+          <div class="doc-item-desc">Показывает, активна подписка или нет — <strong>Активно</strong> / <strong>Неактивно</strong></div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-calendar"></i></span>
+          <div class="doc-item-name">Дата истечения</div>
+          <div class="doc-item-desc">Отображает, до какого числа действует текущая подписка</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-bell"></i></span>
+          <div class="doc-item-name">Звук уведомлений</div>
+          <div class="doc-item-desc">Переключатель для включения или отключения звука системных уведомлений</div>
+        </div>
+      </div>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
+        <div>Если Premium не оформлен, в личном кабинете будет отображаться только статус <strong>«Неактивно»</strong>. Оформить подписку можно через <a href="https://discord.gg/VRJH3CRjt4" target="_blank">магазин в Discord</a>.</div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle"><i class="ti ti-list"></i> Список Premium-команд — <code>/sub info</code></div>
+      <p class="doc-text">
+        Команда <code>/sub info</code> выводит прямо в игре полный список команд, доступных обладателям Premium. Удобно, чтобы не заходить в документацию — всё под рукой.
+      </p>
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-star"></i></span>
+        <div>Команды <code>/sub</code> и <code>/sub info</code> доступны <strong>всем игрокам</strong> — даже без подписки. Проверить статус или узнать, что даёт Premium, можно в любой момент.</div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle"><i class="ti ti-palette"></i> Цветной ник — <code>/color</code></div>
+      <p class="doc-text">
+        Введи <code>/color</code> и выбери цвет для своего ника — он будет виден всем в чате и табе. Доступны как одноцветные, так и градиентные варианты.
+      </p>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle"><i class="ti ti-pencil"></i> Переименование предметов — <code>/rename</code></div>
+      <p class="doc-text">
+        Держи предмет в руке и введи <code>/rename &lt;название&gt;</code>. Стоимость — 10 уровней опыта.
+      </p>
+      <p class="doc-text">Поддерживаются цвета и форматирование:</p>
+      <ul class="doc-list">
+        <li>Ванильные цвета через <code>&amp;</code> — например, <code>&amp;4текст</code></li>
+        <li>HEX-цвета — например, <code>&amp;#94a6b4текст</code></li>
+        <li>Градиенты — комбинируй любые цвета. Удобный генератор: <a href="https://birdflop.com" target="_blank">birdflop.com</a></li>
+      </ul>
+      <div class="doc-table-wrap" style="max-width: 400px;">
+        <table class="doc-table">
+          <thead><tr><th>Код</th><th>Эффект</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">&amp;k</td><td>Магический (мелькающие символы)</td></tr>
+            <tr><td class="doc-cmd">&amp;l</td><td>Жирный</td></tr>
+            <tr><td class="doc-cmd">&amp;m</td><td>Зачёркнутый</td></tr>
+            <tr><td class="doc-cmd">&amp;n</td><td>Подчёркнутый</td></tr>
+            <tr><td class="doc-cmd">&amp;o</td><td>Курсив</td></tr>
+            <tr><td class="doc-cmd">&amp;r</td><td>Сброс форматирования</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- КОМАНДЫ -->
+    <div class="doc-page" id="page-commands">
+
+      <h1 class="doc-title"><i class="ti ti-terminal"></i> Команды</h1>
+      <p class="doc-text">Полный справочник команд, доступных игрокам на FDMine.</p>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Общие</div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/adv</td><td>Посмотреть количество выполненных достижений</td></tr>
+            <tr><td class="doc-cmd">/leaders</td><td>Топ-3 игроков по достижениям, времени и коинам</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Чат</div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/msg &lt;ник&gt; &lt;текст&gt;</td><td>Личное сообщение игроку (также: <code>/w</code>, <code>/tell</code>, <code>/m</code>)</td></tr>
+            <tr><td class="doc-cmd">/r &lt;текст&gt;</td><td>Ответить последнему отправителю ЛС</td></tr>
+            <tr><td class="doc-cmd">/ignore add &lt;ник&gt;</td><td>Добавить игрока в игнор-лист</td></tr>
+            <tr><td class="doc-cmd">/ignore remove &lt;ник&gt;</td><td>Убрать игрока из игнора</td></tr>
+            <tr><td class="doc-cmd">/emojis</td><td>Список доступных кастомных эмодзи</td></tr>
+            <tr><td class="doc-cmd">/cfg</td><td>Персональные настройки чата и уведомлений</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Экономика</div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/bank</td><td>Открыть банковский интерфейс (пополнение, снятие, переводы, история)</td></tr>
+            <tr><td class="doc-cmd">/ar</td><td>Подсчитать АР в инвентаре, контейнере или эндер-сундуке</td></tr>
+            <tr><td class="doc-cmd">/fines</td><td>Посмотреть свои штрафы и оплатить их</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Косметика и коины</div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/spit</td><td>Плюнуть с активным эффектом</td></tr>
+            <tr><td class="doc-cmd">/spitlist</td><td>Список доступных эффектов плевка и их стоимость</td></tr>
+            <tr><td class="doc-cmd">/promo use &lt;код&gt;</td><td>Активировать промокод и получить коины</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Анимации — GSit</div>
+      <p class="doc-text">Позы и анимации — видны другим игрокам в реальном времени. Вводятся без слеша, как обычные команды в чат.</p>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">sit</td><td>Сесть на месте</td></tr>
+            <tr><td class="doc-cmd">lay</td><td>Лечь</td></tr>
+            <tr><td class="doc-cmd">crawl</td><td>Ползти</td></tr>
+            <tr><td class="doc-cmd">spin</td><td>Крутиться</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Механики и предметы</div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/sign</td><td>Добавить подпись к предмету в руке</td></tr>
+            <tr><td class="doc-cmd">/anticopy</td><td>Защитить карту или шаблон от копирования</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Подписка <span style="font-size:0.78em; font-weight:500; opacity:0.65;">(доступно всем)</span></div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/sub</td><td>Открыть личный кабинет Premium — статус, дата истечения, настройка уведомлений</td></tr>
+            <tr><td class="doc-cmd">/sub info</td><td>Показать список всех команд, доступных обладателям Premium</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Premium <span style="font-size:0.78em; font-weight:500; opacity:0.65;">(только с подпиской)</span></div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/hat</td><td>Надеть предмет из рук на голову</td></tr>
+            <tr><td class="doc-cmd">/color</td><td>Сменить цвет ника</td></tr>
+            <tr><td class="doc-cmd">/rename</td><td>Переименовать предмет (10 уровней опыта)</td></tr>
+            <tr><td class="doc-cmd">/setjoin</td><td>Своё сообщение при входе на сервер</td></tr>
+            <tr><td class="doc-cmd">/resetjoin</td><td>Сброс сообщения при входе</td></tr>
+            <tr><td class="doc-cmd">/setquit</td><td>Своё сообщение при выходе с сервера</td></tr>
+            <tr><td class="doc-cmd">/resetquit</td><td>Сброс сообщения при выходе</td></tr>
+            <tr><td class="doc-cmd">/kittycannon</td><td>Выстрел кошкой · перезарядка 4 сек</td></tr>
+            <tr><td class="doc-cmd">/beezooka</td><td>Выстрел пчелой · перезарядка 4 сек</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Судья и Совет мира</div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+          <tbody>
+            <tr><td class="doc-cmd">/fine &lt;ник&gt; &lt;сумма&gt; &lt;срок&gt; &lt;причина&gt;</td><td>Выписать штраф игроку (макс. 1024 АР, срок — например <code>3d</code>)</td></tr>
+            <tr><td class="doc-cmd">/viewfines &lt;ник&gt;</td><td>Просмотреть штрафы игрока</td></tr>
+            <tr><td class="doc-cmd">/cancelfine &lt;ID&gt;</td><td>Отменить штраф по номеру</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+<!-- РОЛИ И СТРУКТУРА -->
+<div class="doc-page" id="page-roles">
+
+  <h1 class="doc-title"><i class="ti ti-crown"></i> Роли и структура</h1>
+  <p class="doc-text">
+    На FDMine выстроена живая иерархия. Игроки занимают реальные посты с уникальными обязанностями и возможностями. Попасть на должность можно через открытые заявки, выборы или по прямому указу Президента.
+  </p>
+
+  <hr class="doc-divider">
+
+  <!-- ПРЕЗИДЕНТ -->
+  <div class="doc-subtitle"><i class="ti ti-award"></i> Президент</div>
+  <p class="doc-text">
+    Глава государства и бессменный руководитель игрового процесса. Он координирует развитие сервера из сезона в сезон, формирует команду и утверждает ключевые назначения.
+  </p>
+  <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+    <div class="doc-item-card">
+      <span class="doc-item-icon"><i class="ti ti-user"></i></span>
+      <div class="doc-item-name">Постоянный статус</div>
+      <div class="doc-item-desc">Пост не меняется и не разыгрывается на выборах — Президент один во всех сезонах</div>
+    </div>
+    <div class="doc-item-card">
+      <span class="doc-item-icon"><i class="ti ti-scale"></i></span>
+      <div class="doc-item-name">Управление командой</div>
+      <div class="doc-item-desc">Назначает или утверждает Судей, Советы миров, Полицию и Министра экономики</div>
+    </div>
+  </div>
+
+  <hr class="doc-divider">
+
+  <!-- СУДЬЯ -->
+  <div class="doc-subtitle"><i class="ti ti-gavel"></i> Судья</div>
+  <p class="doc-text">
+    Ведет судебные процессы, разбирает иски от пострадавших игроков, выносит приговоры и контролирует исполнение наказаний.
+  </p>
+  <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+    <div class="doc-item-card">
+      <span class="doc-item-icon"><i class="ti ti-clipboard-list"></i></span>
+      <div class="doc-item-name">Выборы</div>
+      <div class="doc-item-desc">Подавай заявку во время набора — лучшие кандидаты проходят на общее голосование жителей</div>
+    </div>
+    <div class="doc-item-card">
+      <span class="doc-item-icon"><i class="ti ti-settings"></i></span>
+      <div class="doc-item-name">Доступ к системе</div>
+      <div class="doc-item-desc">Обладает полными правами на управление штрафами в базе данных сервера</div>
+    </div>
+  </div>
+  <div class="doc-table-wrap" style="margin-top: 20px;">
+    <table class="doc-table">
+      <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cmd">/fine &lt;ник&gt; &lt;сумма&gt; &lt;срок&gt; &lt;причина&gt;</td><td>Выписать штраф нарушителю за несоблюдение законов</td></tr>
+        <tr><td class="doc-cmd">/viewfines &lt;ник&gt;</td><td>Посмотреть полный список активных задолженностей игрока</td></tr>
+        <tr><td class="doc-cmd">/cancelfine &lt;ID&gt;</td><td>Аннулировать выписанный штраф по его уникальному номеру</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="doc-divider">
+
+  <!-- СОВЕТЫ МИРОВ -->
+  <div class="doc-subtitle"><i class="ti ti-world"></i> Советы миров</div>
+  <p class="doc-text">
+    Локальное руководство, разделенное по измерениям: Верхний мир, Ад и Энд. Участники советов следят за порядком в своих регионах и могут штрафовать нарушителей.
+  </p>
+  <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+    <div class="doc-item-card">
+      <span class="doc-item-icon"><i class="ti ti-trees"></i></span>
+      <div class="doc-item-name">Верхний мир</div>
+      <div class="doc-item-desc">Контроль территорий и городов в основном измерении</div>
+    </div>
+    <div class="doc-item-card">
+      <span class="doc-item-icon"><i class="ti ti-flame"></i></span>
+      <div class="doc-item-name">Ад</div>
+      <div class="doc-item-desc">Следят за порядком на территории Нижнего мира</div>
+    </div>
+    <div class="doc-item-card">
+      <span class="doc-item-icon"><i class="ti ti-moon-stars"></i></span>
+      <div class="doc-item-name">Энд</div>
+      <div class="doc-item-desc">Регулируют активность и застройку в Крае</div>
+    </div>
+  </div>
+  <div class="doc-table-wrap" style="margin-top: 20px;">
+    <table class="doc-table">
+      <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cmd">/fine &lt;ник&gt; &lt;сумма&gt; &lt;срок&gt; &lt;причина&gt;</td><td>Оштрафовать игрока за локальное нарушение в измерении</td></tr>
+        <tr><td class="doc-cmd">/viewfines &lt;ник&gt;</td><td>Проверить наличие штрафов у подозреваемого</td></tr>
+        <tr><td class="doc-cmd">/cancelfine &lt;ID&gt;</td><td>Отменить ошибочный штраф своего совета по номеру</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="doc-note">
+    <span class="doc-note-icon"><i class="ti ti-list"></i></span>
+    <div>Попасть в совет можно через систему заявок и последующие выборы в нашем Discord.</div>
+  </div>
+
+  <hr class="doc-divider">
+
+  <!-- ПОЛИЦЕЙСКИЙ -->
+  <div class="doc-subtitle"><i class="ti ti-shield-star"></i> Полицейский</div>
+  <p class="doc-text">
+    Занимается патрулированием, принимает жалобы на кражи, собирает улики через логи блоков и передает готовые материалы дел в суд.
+  </p>
+  <div class="doc-table-wrap" style="margin-top: 20px;">
+    <table class="doc-table">
+      <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cmd">/co i</td><td>Режим инспекции блока для проверки истории взаимодействий</td></tr>
+        <tr><td class="doc-cmd">/co near</td><td>Сканирование всех недавних изменений в ближайшем радиусе</td></tr>
+        <tr><td class="doc-cmd">/pinvsee &lt;ник&gt;</td><td>Обыск карманов подозреваемого (работает только вплотную)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="doc-note">
+    <span class="doc-note-icon"><i class="ti ti-list"></i></span>
+    <div>Набор в ряды полиции открывается через заявки в Discord при нехватке кадров в штате.</div>
+  </div>
+
+  <hr class="doc-divider">
+
+  <!-- МИНИСТР ЭКОНОМИКИ -->
+  <div class="doc-subtitle"><i class="ti ti-briefcase"></i> Министр экономики</div>
+  <p class="doc-text">
+    Отвечает за общую стабильность рынка, отслеживает актуальные цены и помогает решать финансовые конфликты.
+  </p>
+  <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+    <div class="doc-item-card">
+      <span class="doc-item-icon"><i class="ti ti-clipboard-list"></i></span>
+      <div class="doc-item-name">Назначение</div>
+      <div class="doc-item-desc">Пост требует высокого доверия — министра выбирает лично Президент</div>
+    </div>
+    <div class="doc-item-card">
+      <span class="doc-item-icon"><i class="ti ti-chart-bar"></i></span>
+      <div class="doc-item-name">Обязанности</div>
+      <div class="doc-item-desc">Корректирует актуальные цены и разбирает коммерческие споры</div>
+    </div>
+  </div>
+
+  <hr class="doc-divider">
+
+  <div class="doc-note">
+    <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
+    <div>Хочешь попробовать себя в роли госслужащего? Включай уведомления в Discord и подавай анкету, когда откроются наборы.</div>
+  </div>
+
+</div>
+
+    <!-- ДОСТИЖЕНИЯ -->
+    <div class="doc-page" id="page-achievements">
+
+      <h1 class="doc-title"><i class="ti ti-trophy"></i> Достижения и лидерборды</h1>
+      <p class="doc-text">
+        На сервере установлен датапак <strong>BlazeAndCave</strong> — более 1000 дополнительных достижений поверх стандартных. Выполняй цели, соревнуйся с другими и попади в топ.
+      </p>
+
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-trophy"></i></span>
+        <div>Введи <code>/adv</code> — тебе выдаст количество выполненных достижений.</div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Лидерборды — <code>/leaders</code></div>
+      <p class="doc-text">Команда <code>/leaders</code> показывает топ-3 игроков по трём категориям:</p>
+
+      <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-medal"></i></span>
+          <div class="doc-item-name">Топ по достижениям</div>
+          <div class="doc-item-desc">Кто выполнил больше всего достижений за сезон</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-stopwatch"></i></span>
+          <div class="doc-item-name">Топ по времени</div>
+          <div class="doc-item-desc">Самые активные игроки по наигранным часам</div>
+        </div>
+        <div class="doc-item-card">
+          <span class="doc-item-icon"><i class="ti ti-coin"></i></span>
+          <div class="doc-item-name">Топ по коинам</div>
+          <div class="doc-item-desc">Игроки с наибольшим количеством накопленных коинов</div>
+        </div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <div class="doc-subtitle">Итоги сезона</div>
+      <p class="doc-text">
+        В конце каждого сезона подводятся итоги по лидербордам. Игроки, занявшие топовые места, навсегда вписывают свои ники в историю сервера. Следи за анонсами в <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a>.
+      </p>
+
+    </div>
+
+    <!-- НОВОВВЕДЕНИЯ -->
+    <div class="doc-page" id="page-changelog">
+      <h1 class="doc-title"><i class="ti ti-sparkles"></i> Нововведения сезона</h1>
+      <p class="doc-text">
+        Список изменений текущего сезона — новые механики, балансные правки, новые регионы и плагины.
+      </p>
+      <div class="doc-subtitle">Сезон — название / дата</div>
+      <ul class="doc-list">
+        <li>Информация появится после старта сезона — следи за анонсами в <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a>.</li>
+      </ul>
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
+        <div>Все крупные обновления и патчноуты публикуются в Discord в канале анонсов.</div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="doc-page" id="page-faq">
+      <h1 class="doc-title"><i class="ti ti-help-circle"></i> FAQ</h1>
+      <p class="doc-text">
+        Частые вопросы от новичков — ответы на самое важное.
+      </p>
+      <div class="accordion">
+        <div class="acc-item">
+          <button class="acc-q" onclick="toggleAcc(this)">
+            <span>Нужна ли лицензионная копия Minecraft?</span>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="acc-a">Нет, FDMine работает в offline-режиме — играть можно как с лицензионной, так и с пиратской копией Java Edition. Если у тебя лицензия, команда <code>/premium</code> переключит аккаунт в лицензионный режим и упростит вход.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" onclick="toggleAcc(this)">
+            <span>Как часто происходит вайп карты?</span>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="acc-a">Каждый сезон длится около 4 месяцев и завершается полным обнулением. Мы запускаем новый мир с чистого листа, чтобы вернуть в игру драйв и равные условия для всех. Даты вайпов всегда анонсируем в Discord заранее.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" onclick="toggleAcc(this)">
+            <span>Можно ли играть с телефона или на Bedrock Edition?</span>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="acc-a">Напрямую через Bedrock-издание зайти не получится — сервер работает только на <strong>Minecraft: Java Edition</strong>. Но если ты хочешь играть с телефона, ты можешь использовать Pojav Launcher для запуска Java-версии.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" onclick="toggleAcc(this)">
+            <span>Как связаться с администрацией?</span>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="acc-a">Через <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a> — это основной канал связи. Там есть тикеты для жалоб, апелляций и технических вопросов. На самом сервере администраторы доступны через <code>/msg</code>.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" onclick="toggleAcc(this)">
+            <span>Меня заблокировали — что делать?</span>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="acc-a">Подай апелляцию в Discord в соответствующем канале. Опиши ситуацию и приложи доказательства, если они есть. Жалобы без аргументов, как правило, не рассматриваются.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-q" onclick="toggleAcc(this)">
+            <span>Обязательно ли использовать официальную сборку FDMPack?</span>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="acc-a">Нет, вход открыт с любого чистого клиента или твоей собственной сборки. FDMPack — это просто готовый набор модов, где уже настроены оптимизация, текстуры и внутриигровой голосовой чат для твоего удобства.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── ПОДВАЛ ─── -->
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 FDMine. Not affiliated with Mojang Studios.</div>
+  </div>
+</footer>
+
+</div>
+
+<script src="../script.js"></script>
+<script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Страница не найдена | FDMine</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .not-found {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .nf-code {
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 22vw, 14rem);
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #a855f7 0%, #00f5ff 60%, #10ffa0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+    user-select: none;
+  }
+
+  .nf-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+
+  .nf-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .nf-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 380px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .nf-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nf-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    background: rgba(168,85,247,0.12);
+    border: 1px solid rgba(168,85,247,0.3);
+    color: #a855f7;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+
+  .nf-back:hover {
+    background: rgba(168,85,247,0.22);
+    border-color: rgba(168,85,247,0.6);
+    transform: translateY(-2px);
+  }
+
+  .nf-back svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+  }
+
+  .nf-back:hover svg {
+    transform: translateX(-3px);
+  }
+</style>
+</head>
+<body>
+
+<div class="blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+  <div class="blob blob-5"></div>
+</div>
+
+<div class="not-found">
+  <div class="nf-code">404</div>
+  <div class="nf-label">Страница не найдена</div>
+  <div class="nf-title">Этого места не существует</div>
+  <p class="nf-desc">Страница была удалена, переехала или ты ввёл неправильный адрес?</p>
+  <div class="nf-actions">
+    <a href="/" class="nf-back">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      На главную
+    </a>
+    <a href="/docs/" class="btn-primary" style="padding: 12px 24px; font-size: 0.92rem;">
+      Документация
+      <svg class="btn-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
