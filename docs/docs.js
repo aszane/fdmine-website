@@ -1,3 +1,17 @@
+// ─── ПРОГРЕСС-БАР СКРОЛЛА ───
+(function () {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+})();
+
 // ─── ПЕРЕКЛЮЧЕНИЕ СТРАНИЦ ДОКУМЕНТАЦИИ ───
 const DOC_DEFAULT = 'info';
 const DOC_FADE_MS = 180;
@@ -79,28 +93,7 @@ function toggleDocSidebar() {
 // ответы в FAQ документации физически не открывались при клике.
 // Используем общую функцию из script.js — она уже подключена в index.html.
 
-// ─── КЛИКАБЕЛЬНЫЙ IP С АНИМАЦИЕЙ (ПЕРЕНЕСЕНО ИЗ SCRIPT.JS) ───
-function copyIP() {
-  const ip = 'mc.fdmine.ru';
-  navigator.clipboard.writeText(ip).then(() => {
-    // Находим кнопку в таблице (или подвале, если он есть)
-    const btn = document.querySelector('.footer-ip-btn');
-    if (!btn) return;
-
-    const span = btn.querySelector('span:not(.footer-ip-dot)');
-    const dot = btn.querySelector('.footer-ip-dot');
-    
-    if (span) span.textContent = 'Скопировано!';
-    if (dot) dot.style.background = '#10ffa0'; // Меняем цвет точки на изумрудный
-    
-    setTimeout(() => {
-      if (span) span.textContent = 'mc.fdmine.ru';
-      if (dot) dot.style.background = ''; // Возвращаем исходный цвет
-    }, 2000);
-  }).catch(err => {
-    console.error('Не удалось скопировать IP: ', err);
-  });
-}
+// copyIP() — общая функция, определена в script.js (подключён раньше)
 // ─── МОБИЛЬНЫЙ BREADCRUMB ───
 function updateBreadcrumb(id) {
   const breadcrumb = document.getElementById('doc-breadcrumb');
@@ -155,7 +148,7 @@ function searchDocs(query) {
     if (!link) return;
 
     // Ищем по тексту страницы (без HTML-тегов)
-    const text = page.innerText || page.textContent || '';
+    const text = page.textContent || '';
     const idx = text.toLowerCase().indexOf(query);
     if (idx === -1) return;
 

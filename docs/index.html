@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
+<script src="../theme-toggle.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Документация — FDMine | Minecraft сервер Vanilla + RP</title>
@@ -23,7 +24,7 @@
 <meta name="twitter:description" content="Полная документация сервера FDMine: механики, экономика, роли, команды и многое другое.">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap&font-display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="docs.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
@@ -33,7 +34,25 @@
   .doc-item-icon i { font-size: 1.4rem; line-height: 1; }
   .doc-link-icon i { font-size: 1.5rem; line-height: 1; }
   .doc-title i { font-size: 0.9em; vertical-align: -3px; margin-right: 6px; }
+
+  /* ─── PAGE TRANSITION ─── */
+  body { opacity: 0; transition: opacity 0.35s ease; }
+  body.page-ready { opacity: 1; }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => document.body.classList.add('page-ready'));
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || a.target === '_blank') return;
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.body.classList.remove('page-ready');
+        setTimeout(() => window.location.href = href, 320);
+      });
+    });
+  });
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,6 +69,9 @@
 </head>
 <body>
 
+<!-- ─── ПРОГРЕСС-БАР СКРОЛЛА ─── -->
+<div id="scroll-progress"></div>
+
 <div class="blobs">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
@@ -63,14 +85,16 @@
 <!-- ─── НАВИГАЦИЯ ─── -->
 <nav>
   <a href="../index.html" class="nav-logo">FDMine</a>
-  <ul class="nav-links">
-    <li><a href="../index.html#howto">Как войти</a></li>
-    <li><a href="#" class="nav-docs">Документация</a></li>
-    <li><a href="https://discord.gg/EhXRK4qqzs" class="nav-cta" target="_blank">Наш Discord</a></li>
+  <ul class="nav-links" style="margin-left:auto;margin-right:8px;">
+    <li><a href="https://discord.gg/EhXRK4qqzs" class="nav-cta" target="_blank" rel="noopener noreferrer">Наш Discord</a></li>
   </ul>
   <div class="nav-hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему">
+    <i class="ti ti-moon icon-dark" aria-hidden="true"></i>
+    <i class="ti ti-sun icon-light" aria-hidden="true"></i>
+  </button>
 </nav>
 
 <!-- ─── DOCS SHELL ─── -->
@@ -143,7 +167,7 @@
       <div class="doc-note">
         <span class="doc-note-icon"><i class="ti ti-shield"></i></span>
         <div>
-          Присоединяйся к нашему <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a>, отправь заявку, прочитай правила и ознакомься с полезными гайдами на этом сайте — всё просто!
+          Присоединяйся к нашему <a href="https://discord.gg/EhXRK4qqzs" target="_blank" rel="noopener noreferrer">Discord</a>, отправь заявку, прочитай правила и ознакомься с полезными гайдами на этом сайте — всё просто!
         </div>
       </div>
 
@@ -181,7 +205,7 @@
       </ol>
       <div class="doc-note warn">
         <span class="doc-note-icon"><i class="ti ti-alert-triangle"></i></span>
-        <div>Загриферили?! - Заходи в наш <a href="https://discord.com/channels/950455724562075668/1509143397619728434" target="_blank">Discord</a>, напиши заявление, мы разберемся с грифером и все восстановим</div>
+        <div>Загриферили?! - Заходи в наш <a href="https://discord.com/channels/950455724562075668/1509143397619728434" target="_blank" rel="noopener noreferrer">Discord</a>, напиши заявление, мы разберемся с грифером и все восстановим</div>
       </div>
     </div>
 
@@ -333,7 +357,17 @@
           <div class="rule-forbidden-item"><i class="ti ti-building-fortress"></i><span>Уничтожение или повреждение чужого имущества</span></div>
           <div class="rule-forbidden-item"><i class="ti ti-package-import"></i><span>Кража чужого имущества</span></div>
           <div class="rule-forbidden-item"><i class="ti ti-sword"></i><span>Нападение на игроков или убийство без оснований</span></div>
-          <div class="rule-forbidden-item"><i class="ti ti-barrier-block"></i><span>Действия на чужой территории, создающие помехи владельцу (блокирование прохода, порча ландшафта и т.д.), игнорируя требование прекратить их</span></div>
+          <div class="rule-forbidden-item">
+            <i class="ti ti-barrier-block"></i>
+            <div class="rule-forbidden-body">
+              <span>Совершение действий на чужой территории, а также рядом с её границами, создающих помеху её владельцу, игнорируя требования прекратить такие действия</span>
+              <div class="rule-forbidden-examples">
+                <span class="rule-example-tag">Блокирование прохода</span>
+                <span class="rule-example-tag">Порча ландшафта</span>
+                <span class="rule-example-tag">Отказ покинуть территорию</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="doc-note" style="max-width:760px;">
           <span class="doc-note-icon"><i class="ti ti-check"></i></span>
@@ -452,7 +486,7 @@
 
       <div class="doc-note">
         <span class="doc-note-icon"><i class="ti ti-message-question"></i></span>
-        <div>Возникли вопросы или столкнулись с нарушением? Обращайтесь в <a href="https://discord.gg/EhXRK4qqzs" target="_blank">службу поддержки Discord</a>.</div>
+        <div>Возникли вопросы или столкнулись с нарушением? Обращайтесь в <a href="https://discord.gg/EhXRK4qqzs" target="_blank" rel="noopener noreferrer">службу поддержки Discord</a>.</div>
       </div>
 
     </div>
@@ -464,7 +498,7 @@
         Все важные ссылки, советуем ознакомиться
       </p>
       <div class="doc-links-grid">
-        <a href="https://discord.gg/EhXRK4qqzs" class="doc-link-card l-purple" target="_blank">
+        <a href="https://discord.gg/EhXRK4qqzs" class="doc-link-card l-purple" target="_blank" rel="noopener noreferrer">
           <div class="doc-link-icon"><i class="ti ti-brand-discord"></i></div>
           <div class="doc-link-text">
             <div class="doc-link-title">Discord-сервер</div>
@@ -472,7 +506,7 @@
           </div>
           <svg class="doc-link-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="https://t.me/dargosh_channel" class="doc-link-card l-cyan" target="_blank">
+        <a href="https://t.me/dargosh_channel" class="doc-link-card l-cyan" target="_blank" rel="noopener noreferrer">
           <div class="doc-link-icon"><i class="ti ti-brand-telegram"></i></div>
           <div class="doc-link-text">
             <div class="doc-link-title">Telegram-канал</div>
@@ -480,7 +514,7 @@
           </div>
           <svg class="doc-link-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="https://discord.gg/VRJH3CRjt4" class="doc-link-card l-emerald" target="_blank">
+        <a href="https://discord.gg/VRJH3CRjt4" class="doc-link-card l-emerald" target="_blank" rel="noopener noreferrer">
           <div class="doc-link-icon"><i class="ti ti-shopping-bag"></i></div>
           <div class="doc-link-text">
             <div class="doc-link-title">Магазин</div>
@@ -488,7 +522,7 @@
           </div>
           <svg class="doc-link-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="https://twitch.tv/dargosh_" class="doc-link-card l-pink" target="_blank">
+        <a href="https://twitch.tv/dargosh_" class="doc-link-card l-pink" target="_blank" rel="noopener noreferrer">
           <div class="doc-link-icon"><i class="ti ti-brand-twitch"></i></div>
           <div class="doc-link-text">
             <div class="doc-link-title">Twitch</div>
@@ -553,8 +587,8 @@
       </div>
 
       <ol class="doc-steps">
-        <li><strong>Скачай Modrinth App</strong> — <a href="https://modrinth.com/app" target="_blank">modrinth.com/app</a>. Установи и открой.</li>
-        <li><strong>Перейди на страницу сборки</strong> — <a href="https://modrinth.com/modpack/fdmpack" target="_blank">modrinth.com/modpack/fdmpack</a> — и нажми <strong>«Install»</strong>. Modrinth App откроется автоматически.</li>
+        <li><strong>Скачай Modrinth App</strong> — <a href="https://modrinth.com/app" target="_blank" rel="noopener noreferrer">modrinth.com/app</a>. Установи и открой.</li>
+        <li><strong>Перейди на страницу сборки</strong> — <a href="https://modrinth.com/modpack/fdmpack" target="_blank" rel="noopener noreferrer">modrinth.com/modpack/fdmpack</a> — и нажми <strong>«Install»</strong>. Modrinth App откроется автоматически.</li>
         <li><strong>Дождись установки</strong> — лаунчер скачает все моды и создаст отдельный профиль FDMPack.</li>
         <li><strong>Запусти игру</strong> из Modrinth App и подключись к серверу по IP <code>mc.fdmine.ru</code>.</li>
       </ol>
@@ -718,7 +752,7 @@
 
       <div class="doc-note warn">
         <span class="doc-note-icon"><i class="ti ti-alert-triangle"></i></span>
-        <div>Загриферили?! - Заходи в наш <a href="https://discord.com/channels/950455724562075668/1509143397619728434" target="_blank">Discord</a>, напиши заявление, мы разберемся с грифером и все восстановим</div>
+        <div>Загриферили?! - Заходи в наш <a href="https://discord.com/channels/950455724562075668/1509143397619728434" target="_blank" rel="noopener noreferrer">Discord</a>, напиши заявление, мы разберемся с грифером и все восстановим</div>
       </div>
 
       <hr class="doc-divider">
@@ -915,7 +949,7 @@
 
       <div class="doc-note">
         <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
-        <div>PlasmoVoice уже включён в <strong>FDMPack</strong>. Если используешь другую сборку — установи мод вручную с <a href="https://modrinth.com/plugin/plasmo-voice" target="_blank">Modrinth</a>.</div>
+        <div>PlasmoVoice уже включён в <strong>FDMPack</strong>. Если используешь другую сборку — установи мод вручную с <a href="https://modrinth.com/plugin/plasmo-voice" target="_blank" rel="noopener noreferrer">Modrinth</a>.</div>
       </div>
 
       <hr class="doc-divider">
@@ -1146,7 +1180,7 @@
 
       <div class="doc-note warn">
         <span class="doc-note-icon"><i class="ti ti-alert-triangle"></i></span>
-        <div>Фикс актуален только для пользователей <strong>Windows</strong> с zapret. Если ты используешь другой обход блокировок — обратись за помощью в <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a>.</div>
+        <div>Фикс актуален только для пользователей <strong>Windows</strong> с zapret. Если ты используешь другой обход блокировок — обратись за помощью в <a href="https://discord.gg/EhXRK4qqzs" target="_blank" rel="noopener noreferrer">Discord</a>.</div>
       </div>
 
     </div>
@@ -1207,7 +1241,7 @@
 
       <div class="doc-note">
         <span class="doc-note-icon"><i class="ti ti-credit-card"></i></span>
-        <div>Стоимость подписки — <strong>189 руб/месяц</strong>. Оформить можно через <a href="https://discord.gg/VRJH3CRjt4" target="_blank">магазин в Discord</a>.</div>
+        <div>Стоимость подписки — <strong>189 руб/месяц</strong>. Оформить можно через <a href="https://discord.gg/VRJH3CRjt4" target="_blank" rel="noopener noreferrer">магазин в Discord</a>.</div>
       </div>
 
       <hr class="doc-divider">
@@ -1287,7 +1321,7 @@
 
       <div class="doc-note">
         <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
-        <div>Если Premium не оформлен, в личном кабинете будет отображаться только статус <strong>«Неактивно»</strong>. Оформить подписку можно через <a href="https://discord.gg/VRJH3CRjt4" target="_blank">магазин в Discord</a>.</div>
+        <div>Если Premium не оформлен, в личном кабинете будет отображаться только статус <strong>«Неактивно»</strong>. Оформить подписку можно через <a href="https://discord.gg/VRJH3CRjt4" target="_blank" rel="noopener noreferrer">магазин в Discord</a>.</div>
       </div>
 
       <hr class="doc-divider">
@@ -1318,7 +1352,7 @@
       <ul class="doc-list">
         <li>Ванильные цвета через <code>&amp;</code> — например, <code>&amp;4текст</code></li>
         <li>HEX-цвета — например, <code>&amp;#94a6b4текст</code></li>
-        <li>Градиенты — комбинируй любые цвета. Удобный генератор: <a href="https://birdflop.com" target="_blank">birdflop.com</a></li>
+        <li>Градиенты — комбинируй любые цвета. Удобный генератор: <a href="https://birdflop.com" target="_blank" rel="noopener noreferrer">birdflop.com</a></li>
       </ul>
       <div class="doc-table-wrap" style="max-width: 400px;">
         <table class="doc-table">
@@ -1483,7 +1517,7 @@
 
   <h1 class="doc-title"><i class="ti ti-crown"></i> Роли и структура</h1>
   <p class="doc-text">
-    На FDMine выстроена живая иерархия. Игроки занимают реальные посты с уникальными обязанностями и возможностями. Попасть на должность можно через открытые заявки, выборы или по прямому указу Президента.
+    На FDMine выстроена живая иерархия. Игроки занимают реальные посты с уникальными обязанностями и возможностями. Каждая роль получается по-своему — одни назначаются, другие выбираются голосованием.
   </p>
 
   <hr class="doc-divider">
@@ -1491,7 +1525,7 @@
   <!-- ПРЕЗИДЕНТ -->
   <div class="doc-subtitle"><i class="ti ti-award"></i> Президент</div>
   <p class="doc-text">
-    Глава государства и бессменный руководитель игрового процесса. Он координирует развитие сервера из сезона в сезон, формирует команду и утверждает ключевые назначения.
+    Глава государства и бессменный руководитель игрового процесса. Координирует развитие сервера из сезона в сезон, формирует команду и утверждает все ключевые назначения.
   </p>
   <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
     <div class="doc-item-card">
@@ -1502,48 +1536,22 @@
     <div class="doc-item-card">
       <span class="doc-item-icon"><i class="ti ti-scale"></i></span>
       <div class="doc-item-name">Управление командой</div>
-      <div class="doc-item-desc">Назначает или утверждает Судей, Советы миров, Полицию и Министра экономики</div>
+      <div class="doc-item-desc">Назначает Судей, Полицию и Министра экономики. Утверждает победителей выборов в Советы миров</div>
     </div>
-  </div>
-
-  <hr class="doc-divider">
-
-  <!-- СУДЬЯ -->
-  <div class="doc-subtitle"><i class="ti ti-gavel"></i> Судья</div>
-  <p class="doc-text">
-    Ведет судебные процессы, разбирает иски от пострадавших игроков, выносит приговоры и контролирует исполнение наказаний.
-  </p>
-  <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
-    <div class="doc-item-card">
-      <span class="doc-item-icon"><i class="ti ti-clipboard-list"></i></span>
-      <div class="doc-item-name">Выборы</div>
-      <div class="doc-item-desc">Подавай заявку во время набора — лучшие кандидаты проходят на общее голосование жителей</div>
-    </div>
-    <div class="doc-item-card">
-      <span class="doc-item-icon"><i class="ti ti-settings"></i></span>
-      <div class="doc-item-name">Доступ к системе</div>
-      <div class="doc-item-desc">Обладает полными правами на управление штрафами в базе данных сервера</div>
-    </div>
-  </div>
-  <div class="doc-table-wrap" style="margin-top: 20px;">
-    <table class="doc-table">
-      <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
-      <tbody>
-        <tr><td class="doc-cmd">/fine &lt;ник&gt; &lt;сумма&gt; &lt;срок&gt; &lt;причина&gt;</td><td>Выписать штраф нарушителю за несоблюдение законов</td></tr>
-        <tr><td class="doc-cmd">/viewfines &lt;ник&gt;</td><td>Посмотреть полный список активных задолженностей игрока</td></tr>
-        <tr><td class="doc-cmd">/cancelfine &lt;ID&gt;</td><td>Аннулировать выписанный штраф по его уникальному номеру</td></tr>
-      </tbody>
-    </table>
   </div>
 
   <hr class="doc-divider">
 
   <!-- СОВЕТЫ МИРОВ -->
-  <div class="doc-subtitle"><i class="ti ti-world"></i> Советы миров</div>
+  <div class="doc-subtitle"><i class="ti ti-world"></i> Советы миров <span style="font-size:0.75em; opacity:0.5; font-weight:400;">— выборная должность</span></div>
   <p class="doc-text">
-    Локальное руководство, разделенное по измерениям: Верхний мир, Ад и Энд. Участники советов следят за порядком в своих регионах и могут штрафовать нарушителей.
+    Локальное руководство, разделённое по измерениям: Верхний мир, Ад и Энд. Участники советов следят за порядком в своих регионах и могут штрафовать нарушителей. <strong>Единственная роль на сервере, которая определяется всеобщим голосованием жителей.</strong>
   </p>
-  <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
+  <div class="doc-note" style="margin-bottom: 20px;">
+    <span class="doc-note-icon"><i class="ti ti-info-circle"></i></span>
+    <div>Как попасть: следи за анонсами в Discord — когда откроется набор, подай заявку. Лучшие кандидаты выходят на общее голосование.</div>
+  </div>
+    <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(4, minmax(220px, 340px));">
     <div class="doc-item-card">
       <span class="doc-item-icon"><i class="ti ti-trees"></i></span>
       <div class="doc-item-name">Верхний мир</div>
@@ -1570,17 +1578,31 @@
       </tbody>
     </table>
   </div>
-  <div class="doc-note">
-    <span class="doc-note-icon"><i class="ti ti-list"></i></span>
-    <div>Попасть в совет можно через систему заявок и последующие выборы в нашем Discord.</div>
+
+  <hr class="doc-divider">
+
+  <!-- СУДЬЯ -->
+  <div class="doc-subtitle"><i class="ti ti-gavel"></i> Судья <span style="font-size:0.75em; opacity:0.5; font-weight:400;">— назначается Президентом</span></div>
+  <p class="doc-text">
+    Ведёт судебные процессы, разбирает иски от пострадавших игроков, выносит приговоры и контролирует исполнение наказаний. Назначается лично Президентом — не через выборы.
+  </p>
+  <div class="doc-table-wrap" style="margin-top: 20px;">
+    <table class="doc-table">
+      <thead><tr><th>Команда</th><th>Описание</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cmd">/fine &lt;ник&gt; &lt;сумма&gt; &lt;срок&gt; &lt;причина&gt;</td><td>Выписать штраф нарушителю за несоблюдение законов</td></tr>
+        <tr><td class="doc-cmd">/viewfines &lt;ник&gt;</td><td>Посмотреть полный список активных задолженностей игрока</td></tr>
+        <tr><td class="doc-cmd">/cancelfine &lt;ID&gt;</td><td>Аннулировать выписанный штраф по его уникальному номеру</td></tr>
+      </tbody>
+    </table>
   </div>
 
   <hr class="doc-divider">
 
   <!-- ПОЛИЦЕЙСКИЙ -->
-  <div class="doc-subtitle"><i class="ti ti-shield-star"></i> Полицейский</div>
+  <div class="doc-subtitle"><i class="ti ti-shield-star"></i> Полицейский <span style="font-size:0.75em; opacity:0.5; font-weight:400;">— назначается Президентом</span></div>
   <p class="doc-text">
-    Занимается патрулированием, принимает жалобы на кражи, собирает улики через логи блоков и передает готовые материалы дел в суд.
+    Занимается патрулированием, принимает жалобы на кражи, собирает улики через логи блоков и передаёт готовые материалы дел в суд. Набор открывается по необходимости — следи за анонсами в Discord.
   </p>
   <div class="doc-table-wrap" style="margin-top: 20px;">
     <table class="doc-table">
@@ -1592,28 +1614,24 @@
       </tbody>
     </table>
   </div>
-  <div class="doc-note">
-    <span class="doc-note-icon"><i class="ti ti-list"></i></span>
-    <div>Набор в ряды полиции открывается через заявки в Discord при нехватке кадров в штате.</div>
-  </div>
 
   <hr class="doc-divider">
 
   <!-- МИНИСТР ЭКОНОМИКИ -->
-  <div class="doc-subtitle"><i class="ti ti-briefcase"></i> Министр экономики</div>
+  <div class="doc-subtitle"><i class="ti ti-briefcase"></i> Министр экономики <span style="font-size:0.75em; opacity:0.5; font-weight:400;">— назначается Президентом</span></div>
   <p class="doc-text">
-    Отвечает за общую стабильность рынка, отслеживает актуальные цены и помогает решать финансовые конфликты.
+    Отвечает за общую стабильность рынка, отслеживает актуальные цены и помогает решать финансовые конфликты. Пост требует высокого доверия — министра выбирает лично Президент.
   </p>
   <div class="doc-grid" style="margin-top: 16px; grid-template-columns: repeat(2, minmax(220px, 340px));">
     <div class="doc-item-card">
-      <span class="doc-item-icon"><i class="ti ti-clipboard-list"></i></span>
-      <div class="doc-item-name">Назначение</div>
-      <div class="doc-item-desc">Пост требует высокого доверия — министра выбирает лично Президент</div>
+      <span class="doc-item-icon"><i class="ti ti-chart-bar"></i></span>
+      <div class="doc-item-name">Стабильность рынка</div>
+      <div class="doc-item-desc">Корректирует актуальные цены, чтобы экономика оставалась честной для всех</div>
     </div>
     <div class="doc-item-card">
-      <span class="doc-item-icon"><i class="ti ti-chart-bar"></i></span>
-      <div class="doc-item-name">Обязанности</div>
-      <div class="doc-item-desc">Корректирует актуальные цены и разбирает коммерческие споры</div>
+      <span class="doc-item-icon"><i class="ti ti-handshake"></i></span>
+      <div class="doc-item-name">Разбор споров</div>
+      <div class="doc-item-desc">Помогает разрешать коммерческие конфликты между игроками</div>
     </div>
   </div>
 
@@ -1621,7 +1639,7 @@
 
   <div class="doc-note">
     <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
-    <div>Хочешь попробовать себя в роли госслужащего? Включай уведомления в Discord и подавай анкету, когда откроются наборы.</div>
+    <div>Хочешь попробовать себя в роли госслужащего? Включай уведомления в Discord — набор в Советы миров проходит через выборы, остальные должности открываются по объявлению.</div>
   </div>
 
 </div>
@@ -1666,7 +1684,7 @@
 
       <div class="doc-subtitle">Итоги сезона</div>
       <p class="doc-text">
-        В конце каждого сезона подводятся итоги по лидербордам. Игроки, занявшие топовые места, навсегда вписывают свои ники в историю сервера. Следи за анонсами в <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a>.
+        В конце каждого сезона подводятся итоги по лидербордам. Игроки, занявшие топовые места, навсегда вписывают свои ники в историю сервера. Следи за анонсами в <a href="https://discord.gg/EhXRK4qqzs" target="_blank" rel="noopener noreferrer">Discord</a>.
       </p>
 
     </div>
@@ -1679,7 +1697,7 @@
       </p>
       <div class="doc-subtitle">Сезон — название / дата</div>
       <ul class="doc-list">
-        <li>Информация появится после старта сезона — следи за анонсами в <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a>.</li>
+        <li>Информация появится после старта сезона — следи за анонсами в <a href="https://discord.gg/EhXRK4qqzs" target="_blank" rel="noopener noreferrer">Discord</a>.</li>
       </ul>
       <div class="doc-note">
         <span class="doc-note-icon"><i class="ti ti-bulb"></i></span>
@@ -1720,7 +1738,7 @@
             <span>Как связаться с администрацией?</span>
             <svg class="acc-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <div class="acc-a">Через <a href="https://discord.gg/EhXRK4qqzs" target="_blank">Discord</a> — это основной канал связи. Там есть тикеты для жалоб, апелляций и технических вопросов. На самом сервере администраторы доступны через <code>/msg</code>.</div>
+          <div class="acc-a">Через <a href="https://discord.gg/EhXRK4qqzs" target="_blank" rel="noopener noreferrer">Discord</a> — это основной канал связи. Там есть тикеты для жалоб, апелляций и технических вопросов. На самом сервере администраторы доступны через <code>/msg</code>.</div>
         </div>
         <div class="acc-item">
           <button class="acc-q" onclick="toggleAcc(this)">

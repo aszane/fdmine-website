@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
+<script src="theme-toggle.js"></script>  <!-- ← вот сюда, первой строкой -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FDMine — Minecraft сервер Vanilla + RP</title>
@@ -21,7 +22,7 @@
 <meta name="twitter:description" content="FDMine — Minecraft Java сервер в стиле Vanilla + RP. Уникальная экономика, ролевое управление, кастомные механики.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap&font-display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
@@ -29,7 +30,25 @@
   .feature-card.wide .feature-icon i { font-size: 1.8rem; }
   .step-icon-sm i { font-size: 1.3rem; line-height: 1; }
   .phi-icon i { font-size: 1.5rem; line-height: 1; }
+
+  /* ─── PAGE TRANSITION ─── */
+  body { opacity: 0; transition: opacity 0.35s ease; }
+  body.page-ready { opacity: 1; }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => document.body.classList.add('page-ready'));
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || a.target === '_blank') return;
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.body.classList.remove('page-ready');
+        setTimeout(() => window.location.href = href, 320);
+      });
+    });
+  });
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -56,16 +75,16 @@
 <nav>
   <a class="nav-logo" href="#hero">FDMine</a>
   <ul class="nav-links">
-    <li><a href="#howto">Как войти</a></li>
-    <li><a href="#features">Особенности</a></li>
-    <li><a href="#about">FAQ</a></li>
-    <li><a href="#store">Донат</a></li>
     <li><a href="docs/" class="nav-docs">Документация</a></li>
-    <li><a href="https://discord.gg/EhXRK4qqzs" class="nav-cta" target="_blank">Наш Discord</a></li>
-  </ul>
+    <li><a href="https://discord.gg/EhXRK4qqzs" class="nav-cta" target="_blank" rel="noopener noreferrer">Наш Discord</a></li>
+</ul>
   <div class="nav-hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему">
+  <i class="ti ti-moon icon-dark" aria-hidden="true"></i>
+  <i class="ti ti-sun icon-light" aria-hidden="true"></i>
+</button>
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -90,7 +109,7 @@
   </p>
 
   <div class="hero-actions">
-    <a href="https://discord.gg/EhXRK4qqzs" class="btn-primary" target="_blank">
+    <a href="https://discord.gg/EhXRK4qqzs" class="btn-primary" target="_blank" rel="noopener noreferrer">
       Начать играть
       <svg class="btn-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -108,7 +127,7 @@
     </div>
     <div class="stat-divider"></div>
     <div class="stat-item">
-      <div class="stat-value">1000+</div>
+      <div class="stat-value" id="achievCount" data-count="1000">0+</div>
       <div class="stat-label">Уникальных достижений</div>
     </div>
     <div class="stat-divider"></div>
@@ -183,7 +202,7 @@
     </div>
 
     <div class="howto-cta reveal">
-      <a href="https://discord.gg/EhXRK4qqzs" class="btn-primary" target="_blank">
+      <a href="https://discord.gg/EhXRK4qqzs" class="btn-primary" target="_blank" rel="noopener noreferrer">
         Подать заявку в Discord
         <svg class="btn-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -227,7 +246,7 @@
   </div>
 
   <div class="features-grid">
-    <div class="feature-card wide reveal">
+    <div class="feature-card reveal">
       <div class="feature-icon icon-cyan"><i class="ti ti-building-bank"></i></div>
       <div>
         <div class="feature-name">Банковская система</div>
@@ -419,7 +438,6 @@
 <footer>
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 FDMine. Not affiliated with Mojang Studios.</div>
-    </button>
     <div class="footer-badge">Сделано с <span>♥</span> для игроков</div>
   </div>
 </footer>
@@ -428,6 +446,116 @@
 
 <div class="toast" id="toast">✓ IP скопирован в буфер обмена!</div>
 
+<!-- ─── EASTER EGG ─── -->
+<div class="easter-egg" id="easterEgg">
+  <div class="easter-egg-inner">
+    <div class="easter-egg-icon">⬡</div>
+    <div class="easter-egg-title">Ты нашёл секрет</div>
+    <div class="easter-egg-text">Привет, исследователь. Мало кто сюда добирается.<br>Ты явно свой человек на FDMine.</div>
+    <button class="easter-egg-close" onclick="document.getElementById('easterEgg').classList.remove('active')">Закрыть</button>
+  </div>
+</div>
+
+<style>
+.easter-egg {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(6,8,16,0.85); backdrop-filter: blur(8px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.easter-egg.active { opacity: 1; pointer-events: all; }
+.easter-egg-inner {
+  background: linear-gradient(135deg, rgba(152,99,231,0.15), rgba(0,245,255,0.08));
+  border: 1px solid rgba(152,99,231,0.35);
+  border-radius: 20px; padding: 40px 48px;
+  text-align: center; max-width: 380px;
+  box-shadow: 0 0 60px rgba(152,99,231,0.2);
+  animation: eggPop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes eggPop {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+.easter-egg-icon { font-size: 2.5rem; margin-bottom: 12px; color: var(--accent-purple); }
+.easter-egg-title { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin-bottom: 10px; }
+.easter-egg-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px; }
+.easter-egg-close {
+  background: linear-gradient(135deg, rgba(152,99,231,0.2), rgba(0,245,255,0.1));
+  border: 1px solid rgba(152,99,231,0.4);
+  color: var(--text-primary); font-size: 0.88rem; font-weight: 600;
+  padding: 9px 28px; border-radius: 100px; cursor: pointer;
+  transition: all 0.2s;
+}
+.easter-egg-close:hover { background: rgba(152,99,231,0.3); box-shadow: 0 0 20px rgba(152,99,231,0.3); }
+</style>
+
 <script src="script.js"></script>
+<script>
+// ─── АНИМИРОВАННЫЙ СЧЁТЧИК ───
+(function() {
+  const el = document.getElementById('achievCount');
+  if (!el) return;
+  let started = false;
+
+  function animateCount() {
+    if (started) return;
+    started = true;
+    const target = parseInt(el.dataset.count);
+    const duration = 1400;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + '+';
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target + '+';
+    }
+    requestAnimationFrame(step);
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { animateCount(); obs.disconnect(); }
+  }, { threshold: 0.5 });
+  obs.observe(el);
+})();
+
+// ─── KONAMI CODE ───
+(function() {
+  const code = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let idx = 0;
+  document.addEventListener('keydown', e => {
+    if (e.key === code[idx]) {
+      idx++;
+      if (idx === code.length) {
+        document.getElementById('easterEgg').classList.add('active');
+        idx = 0;
+      }
+    } else {
+      idx = e.key === code[0] ? 1 : 0;
+    }
+  });
+  document.getElementById('easterEgg').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+})();
+
+// ─── ЗВУК ПРИ КОПИРОВАНИИ IP ───
+window._playClickSound = function() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.18);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.18);
+  } catch(e) {}
+};
+</script>
 </body>
 </html>

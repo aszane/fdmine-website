@@ -39,27 +39,48 @@ function switchTab(id) {
 // ─── COPY IP ───
 function copyIP() {
   const ip = 'mc.fdmine.ru';
-  navigator.clipboard.writeText(ip).then(() => {
+
+  function _onCopied() {
+    if (typeof window._playClickSound === 'function') window._playClickSound();
+    // Контекст главной страницы (#copyBtn)
     const btn = document.getElementById('copyBtn');
     const icon = document.getElementById('ipIcon');
     const text = document.getElementById('ipText');
-    btn.classList.add('copied');
-    icon.textContent = '✓';
-    text.textContent = 'Скопировано!';
-    showToast();
-    setTimeout(() => {
-      btn.classList.remove('copied');
-      icon.textContent = '⬡';
-      text.textContent = ip;
-    }, 2500);
-  }).catch(() => {
+    if (btn) {
+      btn.classList.add('copied');
+      if (icon) icon.textContent = '✓';
+      if (text) text.textContent = 'Скопировано!';
+      showToast();
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        if (icon) icon.textContent = '⬡';
+        if (text) text.textContent = ip;
+      }, 2500);
+    }
+
+    // Контекст документации (.footer-ip-btn)
+    const docBtn = document.querySelector('.footer-ip-btn');
+    if (docBtn) {
+      const span = docBtn.querySelector('span:not(.footer-ip-dot)');
+      const dot  = docBtn.querySelector('.footer-ip-dot');
+      if (span) span.textContent = 'Скопировано!';
+      if (dot)  dot.style.background = '#10ffa0';
+      if (!btn) showToast(); // toast только если нет #copyBtn (т.е. мы в доках)
+      setTimeout(() => {
+        if (span) span.textContent = ip;
+        if (dot)  dot.style.background = '';
+      }, 2000);
+    }
+  }
+
+  navigator.clipboard.writeText(ip).then(_onCopied).catch(() => {
     const el = document.createElement('textarea');
     el.value = ip;
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
-    showToast();
+    _onCopied();
   });
 }
 
@@ -72,42 +93,38 @@ function showToast() {
 
 // ─── РЕАЛЬНЫЙ ТИКЕР ОНЛАЙНА С СЕРВЕРА ───
 function updateRealPlayerCount() {
-  const domain = 'mc.fdmine.ru'; // Используем домен вместо голого IP с портом
+  const domain = 'mc.fdmine.ru';
   const element = document.getElementById('playerCount');
   const navCount = document.getElementById('navCount');
-  
+
   if (!element && !navCount) return;
-  
+
+  // Показываем skeleton пока грузимся
+  if (element) element.classList.add('skeleton');
+  if (navCount) navCount.classList.add('skeleton');
+
   fetch(`https://api.mcsrvstat.us/3/${domain}`)
     .then(response => {
       if (!response.ok) throw new Error('Network response was not ok');
       return response.json();
     })
     .then(data => {
+      if (element) { element.classList.remove('skeleton'); element.style.color = ''; }
+      if (navCount) navCount.classList.remove('skeleton');
+
       if (data.online === true) {
         const playersOnline = data.players ? data.players.online : 0;
-        
-        if (element) {
-          element.textContent = playersOnline;
-          element.style.color = '';
-        }
-        if (navCount) {
-          navCount.textContent = playersOnline;
-        }
+        if (element) element.textContent = playersOnline;
+        if (navCount) navCount.textContent = playersOnline;
       } else {
-        if (element) {
-          element.textContent = 'OFF';
-          element.style.color = '#ff3cac';
-        }
-        if (navCount) {
-          navCount.textContent = 'OFF';
-        }
+        if (element) { element.textContent = 'OFF'; element.style.color = '#ff3cac'; }
+        if (navCount) navCount.textContent = 'OFF';
       }
     })
     .catch(error => {
       console.error('Ошибка получения онлайна:', error);
-      if (element) element.textContent = '?';
-      if (navCount) navCount.textContent = '?';
+      if (element) { element.classList.remove('skeleton'); element.textContent = '?'; }
+      if (navCount) { navCount.classList.remove('skeleton'); navCount.textContent = '?'; }
     });
 }
 
@@ -124,6 +141,21 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 revealEls.forEach(el => observer.observe(el));
+
+// ─── SMOOTH SCROLL ДЛЯ ЯКОРЕЙ ───
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const navHeight = document.querySelector('nav')?.offsetHeight ?? 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+});
 
 // ─── МОБИЛЬНОЕ МЕНЮ (БУРГЕР) ───
 function toggleMenu() {

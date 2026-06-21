@@ -2,6 +2,20 @@
    DOCS LAYOUT — наследует переменные из ../style.css
 ───────────────────────────────────────── */
 
+/* ─── ПРОГРЕСС-БАР СКРОЛЛА ─── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #9863e7, #00f5ff, #10ffa0);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(152, 99, 231, 0.6);
+  pointer-events: none;
+}
+
 .doc-shell {
   position: relative;
   z-index: 1;
@@ -920,6 +934,31 @@
   color: var(--text-secondary);
   font-weight: 400;
   line-height: 1.55;
+}
+
+/* Доп. тело пункта со списком примеров (когда одной строки мало) */
+.rule-forbidden-body {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.rule-forbidden-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rule-forbidden-item .rule-example-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 4px 11px;
+  border-radius: 7px;
+  background: rgba(239,68,68,0.09);
+  border: 1px solid rgba(239,68,68,0.22);
+  color: var(--text-secondary);
+  white-space: nowrap;
 }
 
 /* Плашка итогового наказания */
