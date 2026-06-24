@@ -1160,17 +1160,17 @@
           <strong>Открой .bat-файл стратегии</strong> в любом текстовом редакторе — Блокнот, Notepad++ и т.д.
         </li>
         <li>
-          <strong>Найди строку</strong> начинающуюся с <code>--wf-tcp=</code> и добавь порт <code>10516</code> в конец списка:
+          <strong>Найди строку</strong> начинающуюся с <code>--wf-tcp=</code> и добавь порт <code>25760</code> в конец списка:
           <br><br>
           <em>Было:</em><br>
           <code>--wf-tcp=80,443,2053,2083,2087,2096,8443,</code><br><br>
           <em>Стало:</em><br>
-          <code>--wf-tcp=80,443,2053,2083,2087,2096,8443,<strong>10516,</strong></code>
+          <code>--wf-tcp=80,443,2053,2083,2087,2096,8443,<strong>25760,</strong></code>
         </li>
         <li>
           <strong>После этой строки добавь новую строку</strong> (перед следующим <code>--filter-tcp</code> или в конце блока):
           <div style="margin-top: 10px; background: rgba(152,99,231,0.08); border: 1px solid rgba(152,99,231,0.25); border-radius: 10px; padding: 14px 16px; font-family: monospace; font-size: 13px; line-height: 1.7; word-break: break-all;">
-            --filter-tcp=10516 --ipset-exclude="%LISTS%ipset-exclude.txt" --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n5 --dpi-desync=multisplit --dpi-desync-split-seqovl=582 --dpi-desync-split-pos=1 --dpi-desync-split-seqovl-pattern="%BIN%tls_clienthello_4pda_to.bin" --new ^
+            --filter-tcp=25760 --ipset-exclude="%LISTS%ipset-exclude.txt" --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n5 --dpi-desync=multisplit --dpi-desync-split-seqovl=582 --dpi-desync-split-pos=1 --dpi-desync-split-seqovl-pattern="%BIN%tls_clienthello_4pda_to.bin" --new ^
           </div>
         </li>
         <li>
