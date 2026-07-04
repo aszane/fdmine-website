@@ -23,10 +23,10 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="style.css">
 <style>
-  .feature-icon i { font-size: 1.5rem; line-height: 1; }
-  .feature-card.wide .feature-icon i { font-size: 1.8rem; }
-  .step-icon-sm i { font-size: 1.3rem; line-height: 1; }
-  .phi-icon i { font-size: 1.5rem; line-height: 1; }
+  .feature-icon svg { font-size: 1.5rem; }
+  .feature-card.wide .feature-icon svg { font-size: 1.8rem; }
+  .step-icon-sm svg { font-size: 1.3rem; }
+  .phi-icon svg { font-size: 1.5rem; }
 
   /* ─── PAGE TRANSITION ─── */
   body { opacity: 0; transition: opacity 0.35s ease; }
@@ -150,7 +150,7 @@
           <div class="step-num-big">01</div>
         </div>
         <div class="step-right">
-          <div class="step-icon-sm"></div>
+          <div class="step-icon-sm"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-brand-discord"></use></svg></div>
           <div>
             <div class="step-title">Зайди в Discord</div>
             <div class="step-body">Наш сервер — центр жизни FDMine. Там анонсы, помощь и комьюнити.</div>
@@ -163,7 +163,7 @@
           <div class="step-num-big">02</div>
         </div>
         <div class="step-right">
-          <div class="step-icon-sm"></div>
+          <div class="step-icon-sm"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-clipboard-list"></use></svg></div>
           <div>
             <div class="step-title">Подай заявку</div>
             <div class="step-body">Заполни форму в Discord — сервер работает по проходке. Это бесплатно.</div>
@@ -176,7 +176,7 @@
           <div class="step-num-big">03</div>
         </div>
         <div class="step-right">
-          <div class="step-icon-sm"></div>
+          <div class="step-icon-sm"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-download"></use></svg></div>
           <div>
             <div class="step-title">Установи сборку</div>
             <div class="step-body">Мы предлагаем официальную сборку майнкрафт с Modrinth. Она необязательна.</div>
@@ -189,7 +189,7 @@
           <div class="step-num-big">04</div>
         </div>
         <div class="step-right">
-          <div class="step-icon-sm"></div>
+          <div class="step-icon-sm"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-map-pin"></use></svg></div>
           <div>
             <div class="step-title">Введи адрес</div>
             <div class="step-body">Добавь <code>mc.fdmine.ru</code> в список серверов и жми «Подключиться».</div>
@@ -215,19 +215,19 @@
   </div>
   <div class="phi-row">
     <div class="phi-item reveal">
-      <span class="phi-icon"></span>
+      <span class="phi-icon"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-shield-check"></use></svg></span>
       <div class="phi-item-title">Без гриферства</div>
       <div class="phi-item-desc">Разрушение чужих построек и кража — нарушения закона. Нарушителей штрафуют.</div>
     </div>
     <div class="phi-sep reveal"></div>
     <div class="phi-item reveal">
-      <span class="phi-icon"></span>
+      <span class="phi-icon"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-masks-theater"></use></svg></span>
       <div class="phi-item-title">Живая ролевая игра</div>
       <div class="phi-item-desc">Здесь свои законы, полиция и суды. Ты можешь просто развивать город или влиять на политику целых миров — каждый выбор имеет значение.</div>
     </div>
     <div class="phi-sep reveal"></div>
     <div class="phi-item reveal">
-      <span class="phi-icon"></span>
+      <span class="phi-icon"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-scale"></use></svg></span>
       <div class="phi-item-title">Честная экономика</div>
       <div class="phi-item-desc">Никакой покупки ресурсов или прав за реальные деньги. Донат — это только косметика. Всё решает твое умение торговать и договариваться.</div>
     </div>
@@ -244,7 +244,7 @@
 
   <div class="features-grid">
     <div class="feature-card reveal">
-      <div class="feature-icon icon-cyan"></div>
+      <div class="feature-icon icon-cyan"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-building-bank"></use></svg></div>
       <div>
         <div class="feature-name">Банковская система</div>
         <div class="feature-desc">Управляй финансами через кастомный интерфейс. Открывай счета, выбирай выгодные тарифы, переводи средства друзьям и оплачивай услуги прямо в игре.</div>
@@ -252,31 +252,31 @@
     </div>
     
     <div class="feature-card card-emerald reveal">
-      <div class="feature-icon icon-emerald"></div>
+      <div class="feature-icon icon-emerald"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-chart-bar"></use></svg></div>
       <div class="feature-name">Живая Экономика</div>
       <div class="feature-desc">Рынок полностью в руках игроков. Цены зависят от реального спроса и предложения. Скупай ресурсы, открывай магазины и строй свою торговую империю.</div>
     </div>
     
     <div class="feature-card card-purple reveal">
-      <div class="feature-icon icon-purple"></div>
+      <div class="feature-icon icon-purple"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-coin"></use></svg></div>
       <div class="feature-name">Система коинов</div>
       <div class="feature-desc">Получай внутриигровую валюту за активность и трать её на кастомный визуал. Никакого доната — только твое время, скилл и преданность делу.</div>
     </div>
     
     <div class="feature-card card-pink reveal">
-      <div class="feature-icon icon-pink"></div>
+      <div class="feature-icon icon-pink"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-gavel"></use></svg></div>
       <div class="feature-name">Законы и штрафы</div>
       <div class="feature-desc">Правонарушения караются материально. Преступил закон — плати штраф в АР. За порядком следят полиция, суды и советы миров.</div>
     </div>
     
     <div class="feature-card reveal">
-      <div class="feature-icon icon-amber"></div>
+      <div class="feature-icon icon-amber"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-trophy"></use></svg></div>
       <div class="feature-name">Лидерборды</div>
       <div class="feature-desc">Глобальные топы по коинам, выполненным ачивкам и онлайну. Докажи всему серверу свое превосходство в мирном развитии и экономике.</div>
     </div>
     
     <div class="feature-card card-emerald reveal">
-      <div class="feature-icon icon-emerald"></div>
+      <div class="feature-icon icon-emerald"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-award"></use></svg></div>
       <div class="feature-name">BlazeAndCave — 1000+ ачивок</div>
       <div class="feature-desc">Огромный пак кастомных достижений, который полностью меняет подход к игре. Исследуй мир, выполняй сложные челенджи и открывай скрытый контент.</div>
     </div>
