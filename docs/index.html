@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru" data-theme="dark">
 <head>
-<script src="../theme-toggle.js"></script>
+<script src="../theme-toggle.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Документация — FDMine | Minecraft сервер Vanilla + RP</title>
@@ -23,11 +23,9 @@
 <meta name="twitter:title" content="Документация — FDMine">
 <meta name="twitter:description" content="Полная документация сервера FDMine: механики, экономика, роли, команды и многое другое.">
 <link rel="icon" type="image/png" href="../favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap&font-display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="docs.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="../vendor/tabler-icons/tabler-icons.min.css">
 <style>
   .doc-nav-icon i { font-size: 1rem; line-height: 1; vertical-align: -2px; }
   .doc-note-icon i { font-size: 1.1rem; line-height: 1; }
@@ -423,6 +421,7 @@
         </div>
         <div class="rule-forbidden-list">
           <div class="rule-forbidden-item"><i class="ti ti-mood-angry"></i><span>Угрозы, оскорбления, клевета в адрес игроков, Администрации и их близких</span></div>
+          <div class="rule-forbidden-item"><i class="ti ti-heart-off"></i><span>Оскорбительные и деструктивные высказывания в адрес сервера</span></div>
           <div class="rule-forbidden-item"><i class="ti ti-heart-off"></i><span>Разжигание ненависти по признакам пола, расы, национальности, языка, религии или сексуальной ориентации</span></div>
         </div>
         <div class="rule-verdict">
@@ -985,7 +984,7 @@
 
       <h1 class="doc-title"><i class="ti ti-tool"></i> Механики и предметы</h1>
       <p class="doc-text">
-        Кастомные крафты, особые механики и персональные настройки — всё уникальное в одном месте.
+        Кастомные крафты, особые механики, торговля с жителями и персональные настройки — всё уникальное в одном месте.
       </p>
 
       <!-- ── БЛОК: КРАФТЫ ── -->
@@ -1007,6 +1006,44 @@
           <img src="https://aszane.github.io/fdmine-assets/img/ender.png" alt="Крафт ока эндера" style="max-width: 80%; border-radius: 10px; display: block; margin-top: 10px;">
         </div>
 
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── БЛОК: ТОРГОВЛЯ С ЖИТЕЛЯМИ ── -->
+      <div class="doc-h2"><i class="ti ti-friends"></i> Торговля с жителями</div>
+      <p class="doc-text">
+        Ванильные трейды с жителями на сервере немного пересмотрены — это сделано, чтобы самые сильные зачарования и снаряжение оставались ценностью, а не разменной монетой у первого встречного жителя.
+      </p>
+
+      <div class="doc-subtitle"><i class="ti ti-books"></i> Библиотекарь</div>
+      <p class="doc-text">
+        Выторговать книгу с зачарованием выше <strong>II уровня</strong> больше не получится — это касается любых зачарований, у которых в ваниле максимум выше первого уровня. Например, «Остроту» библиотекарь предложит максимум <strong>Остротой II</strong>, а не III или выше.
+      </p>
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-sparkles"></i></span>
+        <div>На <strong>максимальном (мастер) уровне</strong> у библиотекаря гарантированно появляется книга <strong>«Починка»</strong>. Стоит она недёшево — <strong>20 глубинносланцевой изумрудной руды</strong> — зато шанса на неё ждать не нужно.</div>
+      </div>
+
+      <div class="doc-subtitle"><i class="ti ti-sword"></i> Оружейник</div>
+      <p class="doc-text">
+        Алмазное снаряжение больше нельзя купить просто за изумрудную руду — оружейник дополнительно попросит доплатить <strong>алмазами</strong>. Простой обмен работает только для снаряжения из более дешёвых материалов.
+      </p>
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-diamond"></i></span>
+        <div>Держи под рукой не только валюту, но и запас алмазов — без них сделка за алмазное снаряжение просто не состоится.</div>
+      </div>
+
+      <hr class="doc-divider">
+
+      <!-- ── БЛОК: ГОЛОВЫ ИГРОКОВ ── -->
+      <div class="doc-h2"><i class="ti ti-mood-smile"></i> Головы игроков</div>
+      <p class="doc-text">
+        При гибели игрока с небольшим шансом выпадает его голова — приятный трофей для коллекции, украшения дома или просто на память. Это чисто косметическая механика для атмосферы, а не приглашение поохотиться на других.
+      </p>
+      <div class="doc-note">
+        <span class="doc-note-icon"><i class="ti ti-heart"></i></span>
+        <div>Специально фармить головы, убивая игроков без причины, не нужно — это по-прежнему нарушение правил RP. Если голова выпала — это приятный бонус, а не повод для охоты.</div>
       </div>
 
       <hr class="doc-divider">
