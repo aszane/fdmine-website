@@ -116,7 +116,49 @@ showDocPage = function(id, opts) {
   _origShowDocPage(id, opts);
   // Небольшая задержка чтобы active-класс уже проставился
   setTimeout(() => updateBreadcrumb(id), 10);
+  setTimeout(() => moveNavIndicator(id), 10);
 };
+
+// ─── СКОЛЬЗЯЩИЙ ИНДИКАТОР АКТИВНОГО РАЗДЕЛА ───
+let navIndicatorEl = null;
+
+function ensureNavIndicator() {
+  if (navIndicatorEl) return navIndicatorEl;
+  const sidebar = document.getElementById('doc-sidebar');
+  if (!sidebar) return null;
+  navIndicatorEl = document.createElement('div');
+  navIndicatorEl.className = 'doc-nav-indicator';
+  sidebar.prepend(navIndicatorEl);
+  return navIndicatorEl;
+}
+
+function moveNavIndicator(id) {
+  const indicator = ensureNavIndicator();
+  if (!indicator) return;
+
+  const link = document.querySelector('.doc-nav-link[data-page="' + id + '"]');
+  if (!link || link.offsetParent === null) {
+    indicator.style.opacity = '0';
+    return;
+  }
+
+  indicator.style.transform = 'translate(' + link.offsetLeft + 'px, ' + link.offsetTop + 'px)';
+  indicator.style.width = link.offsetWidth + 'px';
+  indicator.style.height = link.offsetHeight + 'px';
+  indicator.style.opacity = '1';
+}
+
+window.addEventListener('resize', () => {
+  const active = document.querySelector('.doc-nav-link.active');
+  if (active) moveNavIndicator(active.dataset.page);
+});
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(() => {
+    const active = document.querySelector('.doc-nav-link.active');
+    if (active) moveNavIndicator(active.dataset.page);
+  });
+}
 
 // ─── ПОИСК ПО ДОКУМЕНТАЦИИ ───
 function searchDocs(query) {
@@ -132,11 +174,14 @@ function searchDocs(query) {
     results.innerHTML = '';
     results.style.display = 'none';
     navGroups.forEach(g => g.style.display = '');
+    const active = document.querySelector('.doc-nav-link.active');
+    if (active) setTimeout(() => moveNavIndicator(active.dataset.page), 10);
     return;
   }
 
   // Скрываем обычную навигацию
   navGroups.forEach(g => g.style.display = 'none');
+  if (navIndicatorEl) navIndicatorEl.style.opacity = '0';
 
   // Ищем по всем страницам
   const pages = document.querySelectorAll('.doc-page');

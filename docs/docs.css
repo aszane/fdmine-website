@@ -86,11 +86,25 @@
   background: var(--glass-hover);
   color: var(--text-primary);
 }
-.doc-nav-link.active {
+.doc-nav-link {
+  position: relative;
+  z-index: 1;
+}
+.doc-nav-indicator {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  border-radius: 14px;
   background: linear-gradient(135deg, rgba(168,85,247,0.18), rgba(0,245,255,0.10));
   border: 1px solid rgba(168,85,247,0.30);
-  color: var(--text-primary);
   box-shadow: var(--glow-purple);
+  opacity: 0;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), height 0.32s cubic-bezier(0.22, 1, 0.36, 1), width 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+  pointer-events: none;
+}
+.doc-nav-link.active {
+  color: var(--text-primary);
 }
 
 /* ─── MOBILE SIDEBAR TOGGLE ─── */

@@ -176,25 +176,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ─── ДВИЖЕНИЕ ШАРОВ ЗА МЫШКОЙ ───
-let targetX = 0, targetY = 0;
-let currentX = 0, currentY = 0;
 
-document.addEventListener('mousemove', (e) => {
-  targetX = (e.clientX / window.innerWidth - 0.5) * 2;
-  targetY = (e.clientY / window.innerHeight - 0.5) * 2;
-});
 
-(function animateBlobs() {
-  currentX += (targetX - currentX) * 0.05;
-  currentY += (targetY - currentY) * 0.05;
+// ─── КНОПКА "НАВЕРХ" ───
+(function backToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+})();
+// ─── ПОИСК ПО КРАТКИМ ПРАВИЛАМ (лендинг) ───
+function filterRules(query) {
+  const items = document.querySelectorAll('#rules-list .rule-item');
+  const empty = document.getElementById('rules-empty');
+  query = query.trim().toLowerCase();
 
-  const blobs = document.querySelectorAll('.blob');
-  blobs.forEach((b, i) => {
-    const strength = (i + 1) * 18;
-    b.style.setProperty('--mx', `${currentX * strength}px`);
-    b.style.setProperty('--my', `${currentY * strength}px`);
+  let visibleCount = 0;
+  items.forEach(item => {
+    const haystack = (item.dataset.text + ' ' + item.textContent).toLowerCase();
+    const match = !query || haystack.includes(query);
+    item.classList.toggle('hidden', !match);
+    if (match) visibleCount++;
   });
 
-  requestAnimationFrame(animateBlobs);
-})();
+  if (empty) empty.classList.toggle('visible', visibleCount === 0);
+}

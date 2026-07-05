@@ -5,6 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FDMine — Minecraft сервер Vanilla + RP</title>
+<meta name="theme-color" content="#a855f7">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://api.mcsrvstat.us; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+<link rel="preload" href="fonts/montserrat-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <meta name="description" content="FDMine — Minecraft Java сервер в стиле Vanilla + RP. Уникальная экономика, ролевое управление, кастомные механики. Заходи и стань частью мира FDMine!">
 <meta name="keywords" content="FDMine, майнкрафт сервер, minecraft server, vanilla rp, FDMine сервер, minecraft java, fdmine.ru">
 <meta name="robots" content="index, follow">
@@ -58,12 +62,13 @@
 </head>
 <body>
 
-<div class="blobs">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="blob blob-4"></div>
-  <div class="blob blob-5"></div>
+<a href="#hero" class="skip-link">Перейти к основному содержимому</a>
+
+<div class="ambient-bg">
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="ambient-glow ambient-glow-3"></div>
+  <div class="ambient-glow ambient-glow-4"></div>
 </div>
 
 <div class="wrapper">
@@ -79,8 +84,8 @@
     <span></span><span></span><span></span>
   </div>
 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему">
-  
-  
+  <svg class="icon icon-dark" width="1em" height="1em" aria-hidden="true"><use href="icons.svg#ti-moon"></use></svg>
+  <svg class="icon icon-light" width="1em" height="1em" aria-hidden="true"><use href="icons.svg#ti-sun"></use></svg>
 </button>
 </nav>
 
@@ -232,6 +237,73 @@
       <div class="phi-item-desc">Никакой покупки ресурсов или прав за реальные деньги. Донат — это только косметика. Всё решает твое умение торговать и договариваться.</div>
     </div>
   </div>
+</section>
+
+<!-- ─── КРАТКО: ПРАВИЛА ─── -->
+<section id="rules-quick">
+  <div class="rules-head reveal">
+    <div class="section-label">Важно знать</div>
+    <h2 class="section-title">Кратко: <span class="rules-accent">правила</span></h2>
+    <p class="section-desc">Полный список — в документации. Здесь только самое важное, чтобы не нарваться на штраф в первый же день.</p>
+  </div>
+
+  <div class="rules-search-wrap reveal">
+    <svg class="icon rules-search-icon" width="1em" height="1em"><use href="icons.svg#ti-search"></use></svg>
+    <input type="text" id="rules-search" class="rules-search-input" placeholder="Поиск по правилам..." oninput="filterRules(this.value)" autocomplete="off">
+  </div>
+
+  <div class="rules-list" id="rules-list">
+    <div class="rule-item reveal" data-text="грифинг разрушение построек кража чужое имущество">
+      <div class="rule-num">01</div>
+      <div class="rule-body">
+        <div class="rule-title">Без гриферства</div>
+        <div class="rule-desc">Разрушение или порча чужих построек и кража имущества без разрешения владельца — нарушение закона, карается штрафом.</div>
+      </div>
+    </div>
+    <div class="rule-item reveal" data-text="донат косметика реальные деньги покупка ресурсов привилегии">
+      <div class="rule-num">02</div>
+      <div class="rule-body">
+        <div class="rule-title">Донат — только косметика</div>
+        <div class="rule-desc">Купить игровое преимущество за реальные деньги нельзя. Донат влияет исключительно на визуал, не на баланс сил.</div>
+      </div>
+    </div>
+    <div class="rule-item reveal" data-text="читы моды x-ray дюпы автокликер запрещённый софт">
+      <div class="rule-num">03</div>
+      <div class="rule-body">
+        <div class="rule-title">Читы и дюпы под запретом</div>
+        <div class="rule-desc">X-ray, автокликеры, дюп-баги и любой софт, дающий нечестное преимущество — блокировка без предупреждений.</div>
+      </div>
+    </div>
+    <div class="rule-item reveal" data-text="токсичность оскорбления травля чат общение">
+      <div class="rule-num">04</div>
+      <div class="rule-body">
+        <div class="rule-title">Уважение в общении</div>
+        <div class="rule-desc">Оскорбления, травля и токсичное поведение в чате и голосовых каналах наказываются вплоть до бана.</div>
+      </div>
+    </div>
+    <div class="rule-item reveal" data-text="суд полиция закон нарушение штраф разбирательство">
+      <div class="rule-num">05</div>
+      <div class="rule-body">
+        <div class="rule-title">Споры решает суд</div>
+        <div class="rule-desc">Конфликты между игроками рассматривает игровая полиция и суд — самосуд и месть в игре не приветствуются.</div>
+      </div>
+    </div>
+    <div class="rule-item reveal" data-text="проходка анкета заявка передача аккаунт">
+      <div class="rule-num">06</div>
+      <div class="rule-body">
+        <div class="rule-title">Проходка не передаётся</div>
+        <div class="rule-desc">Доступ к серверу привязан к твоему аккаунту навсегда и не может быть передан или подарен другому игроку.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rules-empty" id="rules-empty">Ничего не найдено. Попробуй другой запрос или загляни в документацию.</div>
+
+  <a href="docs/" class="docs-link reveal">
+    <span class="docs-icon"><svg class="icon" width="1em" height="1em"><use href="icons.svg#ti-scale"></use></svg></span>
+    <span>Полный список правил в документации</span>
+    <svg class="docs-arrow" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
 </section>
 
 <!-- ─── ОСОБЕННОСТИ ─── -->
@@ -433,13 +505,49 @@
 
 <!-- ─── ПОДВАЛ ─── -->
 <footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">FDMine</div>
+      <p class="footer-tagline">Vanilla + RP выживание с уникальной экономикой и живым комьюнити.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="https://discord.gg/EhXRK4qqzs" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+          <svg class="icon" width="1.1em" height="1.1em"><use href="icons.svg#ti-brand-discord"></use></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Сервер</h5>
+        <ul>
+          <li><a href="#hero">Начать играть</a></li>
+          <li><a href="#howto">Как начать</a></li>
+          <li><a href="#features">Особенности</a></li>
+          <li><a href="#about">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Сообщество</h5>
+        <ul>
+          <li><a href="https://discord.gg/EhXRK4qqzs" target="_blank" rel="noopener noreferrer">Discord</a></li>
+          <li><a href="https://discord.gg/VRJH3CRjt4" target="_blank" rel="noopener noreferrer">Магазин</a></li>
+          <li><a href="docs/">Документация</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 FDMine. Not affiliated with Mojang Studios.</div>
-    <div class="footer-badge">Сделано с <span>♥</span> для игроков</div>
+    <div class="footer-badge">made by <a href="https://aszane.is-a.dev/" target="_blank" rel="noopener noreferrer" class="footer-author">aszane</a> <span>♥</span></div>
   </div>
 </footer>
 
 </div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">
+  <svg class="icon" width="1em" height="1em" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
 
 <div class="toast" id="toast">✓ IP скопирован в буфер обмена!</div>
 
